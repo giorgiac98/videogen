@@ -11,7 +11,6 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -122,7 +121,7 @@
               echo '<a href="product.php?cod=' . $games['cod'] . '">
                     <h4 class="card-title">' . $games['titolo'] . '</h4></a>';
               echo '<h5>' . $games['produttore'] . '</h5>';
-              
+
               $query2 = $db->prepare(
                 "SELECT * FROM giochi_console g
                 JOIN console c ON c.cod = g.cod_console
@@ -137,7 +136,7 @@
                     </div>';
             }
           ?>
-              
+
         </div>
       </div>
       <?php
@@ -156,7 +155,7 @@
             echo '<a href="product.php?cod=' . $games['cod'] . '&cons=' . $console['cod'] . '">
                   <h4 class="card-title">' . $games['titolo'] . '</h4></a>';
             echo '<h5>' . $games['produttore'] . '</h5>';
-            
+
             $query2 = $db->prepare(
               "SELECT * FROM giochi_console g
               JOIN console c ON c.cod = g.cod_console
@@ -173,9 +172,9 @@
           echo '</div></div>';
         }
       ?>
-      
+
     </div>
-    
+
   </div><!-- /.container -->
   <!-- FOOTER -->
   <footer class="container">
