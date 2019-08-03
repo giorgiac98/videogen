@@ -1,0 +1,58 @@
+/* GLOBAL STYLES
+-------------------------------------------------- */
+a {
+  color: #28a745;
+}
+
+a:hover{
+  color: #00bb2b;
+}
+
+.myForm{
+  padding-left: 15px;
+}
+
+.nav-item{
+  padding-left: 15px;
+}
+
+.nav-link.active{
+  background-color: #28a745!important;
+}
+
+.navbar-dark .navbar-nav .nav-link.disabled {
+    color: #125f15;
+}
+
+.bg-dark {
+    background-color: #000000!important;
+}
+
+.card-product {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  min-width: 0; // See https://github.com/twbs/bootstrap/pull/22740#issuecomment-305868106
+  word-wrap: break-word;
+  background-color: $card-bg;
+  background-clip: border-box;
+  border: $card-border-width solid $card-border-color;
+  @include border-radius($card-border-radius);
+
+  > hr {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  > .list-group:first-child {
+    .list-group-item:first-child {
+      @include border-top-radius($card-border-radius);
+    }
+  }
+
+  > .list-group:last-child {
+    .list-group-item:last-child {
+      @include border-bottom-radius($card-border-radius);
+    }
+  }
+}
