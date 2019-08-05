@@ -90,6 +90,9 @@
   <!-- Wrap the rest of the page in another container to center all the content. -->
 
   <div class="container marketing">
+    <?php
+      echo $_SESSION['pdoex_error'];
+     ?>
     <h1>Catalogo Videogiochi</h1>
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
       <li class="nav-item">
