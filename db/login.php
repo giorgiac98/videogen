@@ -1,14 +1,14 @@
-<?php 
+<?php
     session_start();
     if ((isset($_POST['user'])) && (isset($_POST['password']))){
 		require_once 'connect.php';
 		try {
-			$sql = 'SELECT password, admin FROM utenti WHERE utente = ?';
+			$sql = 'SELECT password, admin FROM utenti WHERE username = ?';
 			$user = $_POST['user'];
 			$pass = $_POST['password'];
 			$query = $db->prepare($sql);
 			$query->execute([$user]);
-	
+
 			if($query->rowCount() == 1){
 				$res = $query->fetch();
 				$dbpass = $res['password'];
@@ -39,7 +39,7 @@
 			sleep(5);
 			header("Location: ../index.php");
 		}
-		
+
     }
     else{
     	header("Location: ../signin.php");

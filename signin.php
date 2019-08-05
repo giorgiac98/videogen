@@ -45,10 +45,14 @@
                 <input type="password" name="password" class="form-control" placeholder="Password" required>
                 <label for="inputEmail" class="sr-only">Email</label>
                 <input type="email" name="email" class="form-control" placeholder="user@example.com" required>
-                <label for="inputName" class="sr-only">Name</label>
-                <input type="text" name="name" class="form-control" placeholder="Name" required>
-                <label for="inputSurname" class="sr-only">Surname</label>
-                <input type="text" name="surname" class="form-control" placeholder="Surname" required>
+                <label for="inputName" class="sr-only">Nome</label>
+                <input type="text" name="name" class="form-control" placeholder="Nome" required>
+                <label for="inputSurname" class="sr-only">Cognome</label>
+                <input type="text" name="surname" class="form-control" placeholder="Cognome" required>
+                <label for="inputAddress" class="sr-only">Indirizzo</label>
+                <input type="text" name="address" class="form-control" placeholder="Via, numero, città, paese" required>
+                <label for="inputNumber" class="sr-only">Telefono</label>
+                <input type="text" name="number" class="form-control" placeholder="Numero di telefono" required>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
               </form>
             </div>
