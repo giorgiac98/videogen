@@ -14,6 +14,7 @@
 				$dbpass = $res['password'];
 				$isAdmin = $res['admin'];
 				if (password_verify($pass, $dbpass)){
+          unset($_SESSION['pdoex_error']);
 					$_SESSION['user'] = $user;
 					if ($isAdmin){
 						$_SESSION['logged'] = 100;
@@ -35,6 +36,7 @@
 		}
 		catch(PDOException $e){
 			echo $e->getMessage();
+      $_SESSION['pdoex_error'] = $e->getMessage();
 			echo "Yeah, this is an error. You will be redirected shortly.";
 			sleep(5);
 			header("Location: ../index.php");

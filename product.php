@@ -3,14 +3,14 @@
   require_once 'db/connect.php';
   $query = $db->prepare(
     "SELECT * FROM videogiochi
-    WHERE cod = ?");
-  $query->execute([$_GET['cod']]);
+    WHERE id = ?");
+  $query->execute([$_GET['id']]);
   $game = $query->fetch();
   $query2 = $db->prepare(
     "SELECT * FROM giochi_console g
-    JOIN console c ON c.cod = g.cod_console
-    WHERE cod_gioco = ?");
-  $query2->execute([$_GET['cod']]);
+    JOIN console c ON c.id = g.id_console
+    WHERE id_gioco = ?");
+  $query2->execute([$_GET['id']]);
 ?>
 <!doctype html>
 <html lang="it">
@@ -63,27 +63,27 @@
               while ($console_price = $query2->fetch(PDO::FETCH_ASSOC)) {
                 echo '<li class="nav-item">
                         <a class="nav-link';
-                if((isset($_GET['cons'])) && $_GET['cons'] ==  $console_price['cod_console']){
+                if((isset($_GET['cons'])) && $_GET['cons'] ==  $console_price['id_console']){
                   echo ' active';
                 }
-                
-                echo '    " id="pills-' . $console_price['cod_console'] . '-tab" data-toggle="pill" href="#pills-' . $console_price['cod_console'] . '" role="tab" aria-controls="pills-' . $console_price['cod_console'] . '" aria-selected="false">' . $console_price['nome'] . '</a>
+
+                echo '    " id="pills-' . $console_price['id_console'] . '-tab" data-toggle="pill" href="#pills-' . $console_price['id_console'] . '" role="tab" aria-controls="pills-' . $console_price['id_console'] . '" aria-selected="false">' . $console_price['nome'] . '</a>
                       </li>';
               }
               echo '</ul>';
               echo '<div class="tab-content" id="pills-tabContent">';
-            
-                $query2->execute([$_GET['cod']]);
+
+                $query2->execute([$_GET['id']]);
                 while ($console_price = $query2->fetch(PDO::FETCH_ASSOC)) {
                     echo '<div class="tab-pane fade';
-                    if((isset($_GET['cons'])) && $_GET['cons'] ==  $console_price['cod_console']){
+                    if((isset($_GET['cons'])) && $_GET['cons'] ==  $console_price['id_console']){
                       echo ' show active';
                     }
-                    echo'" id="pills-' . $console_price['cod_console'] . '" role="tabpanel" aria-labelledby="pills-' . $console_price['cod_console'] . '-tab">';
+                    echo'" id="pills-' . $console_price['id_console'] . '" role="tabpanel" aria-labelledby="pills-' . $console_price['id_console'] . '-tab">';
                     echo '<p>Prezzo  € ' . $console_price['prezzo'] . '</p>';
                     echo '</div>';
                 }
-            
+
               echo '</div>';
               ?>
             <div class="input-group mb-3">
@@ -93,9 +93,9 @@
               <select class="custom-select" id="inputGroupConsole">
                 <option selected>Scegli...</option>
                 <?php
-                  $query2->execute([$_GET['cod']]);
+                  $query2->execute([$_GET['id']]);
                   while ($console_price = $query2->fetch(PDO::FETCH_ASSOC)) {
-                    echo '<option value="' . $console_price['cod_console'] .'">' . $console_price['nome'] . '</option>';
+                    echo '<option value="' . $console_price['id_console'] .'">' . $console_price['nome'] . '</option>';
                   }
                 ?>
               </select>

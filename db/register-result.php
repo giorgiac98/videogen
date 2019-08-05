@@ -17,8 +17,9 @@
       }else{
         echo "Yeah, this is an error. You will be redirected shortly.";
         echo $_SESSION['pdoex_error'];
+        unset($_SESSION['pdoex_error']);
       }
-        sleep(5);
+        sleep(10);
         header("Location: ../index.php");
     ?>
   </body>
