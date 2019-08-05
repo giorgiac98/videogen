@@ -1,11 +1,11 @@
 <?php
     session_start();
-    
-    $host = $IP; 
-    $dbname = "videogen"; 
-    $user = "admin"; 
-    $password = "admin";
-    
+
+    $host = "localhost";
+    $dbname = "postgres";
+    $user = "postgres";
+    $password = "postgres";
+
     try {
         $db = new PDO("pgsql:user=$user dbname=$dbname password=$password");
         //$db = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
