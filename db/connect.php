@@ -1,5 +1,5 @@
 <?php
-    session_start();// non so perché ma se non commento viene fuori una NOTICE sulla pagina
+    //session_start();// non so perché ma se non commento viene fuori una NOTICE sulla pagina
 
     $host = "localhost";
     $dbname = "videogen";

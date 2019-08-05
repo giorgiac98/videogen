@@ -10,9 +10,14 @@
   </head>
   <body class="text-center">
     <?php
+      if(!isset($_SESSION['pdoex_error'])){
         echo 'Registration Successful!';
         echo 'Welcome aboard, ' . $user;
         echo 'You will be redirected shortly.';
+      }else{
+        echo "Yeah, this is an error. You will be redirected shortly.\n";
+          echo $_SESSION['pdoex_error'];
+      }
         sleep(5);
         header("Location: ../index.php");
     ?>
