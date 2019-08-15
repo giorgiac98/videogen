@@ -56,3 +56,9 @@ a:hover{
     }
   }
 }
+
+.input-group>.input-group-prepend>.input-group-text{
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
+}

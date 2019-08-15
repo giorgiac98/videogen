@@ -91,7 +91,7 @@
 
   <div class="container marketing">
     <h1>Catalogo Videogiochi</h1>
-    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <ul class="nav nav-pills mb-4 mt-4" id="pills-tab" role="tablist">
       <li class="nav-item">
         <a class="nav-link active" id="pills-all-tab" data-toggle="pill" href="#pills-all" role="tab" aria-controls="pills-all" aria-selected="true">Tutti</a>
       </li>
