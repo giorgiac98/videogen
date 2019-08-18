@@ -15,6 +15,7 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <!-- Custom styles for this template -->
     <link href="css/dashboard.css" rel="stylesheet">
     <link href="css/videogen.css" rel="stylesheet">
@@ -68,7 +69,7 @@
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">Dashboard</h1>
           </div>
-          CONTENUTO
+          Benvenuto! Usa il menù a sinistra per spostarti.
         </div>
         <div class="tab-pane fade" id="products" role="tabpanel" aria-labelledby="prod-tab">
           <div class="d-flex flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -85,14 +86,13 @@
                 <th scope="col">Produttore</th>
                 <th scope="col">Console</th>
                 <th scope="col">Quantità</th>
+                <th scope="col">Modifica</th>
               </tr>
             </thead>
             <tbody>
               <?php
               require_once 'db/connect.php';
-              $query = $db->prepare("SELECT * FROM videogiochi v
-                JOIN giochi_console g ON v.id = g.id_gioco
-                JOIN console c ON c.id = g.id_console");
+              $query = $db->prepare("SELECT * FROM videogiochi v");
               $query->execute();
               $i = 1;
               while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
@@ -100,8 +100,11 @@
                 echo '<th scope="row">' . $i . '</th>';
                 echo '<td>' . $row['titolo'] . '</td>';
                 echo '<td>' . $row['produttore'] . '</td>';
-                echo '<td>' . $row['nome'] . '</td>';
+                echo '<td>' . $row['console'] . '</td>';
                 echo '<td>' . $row['qta'] . '</td>';
+                echo '<td> <button type="button" class="btn btn-primary btn-sm"><i class="fas fa-wrench"></i></button>
+                      <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                      </td>';
                 echo '</tr>';
                 $i = $i + 1;
               }
@@ -164,20 +167,36 @@
               </button>
             </div>
             <div class="modal-body">
-              <form>
+              <form action="db/addProduct.php" method="post">
                 <div class="form-group">
-                  <label for="productName">Product name</label>
-                  <input type="text" class="form-control" name="productName" placeholder="Product name" required>
+                  <label for="prodTitle">Titolo</label>
+                  <input type="text" class="form-control" name="prodTitle" placeholder="Titolo" required>
                 </div>
                 <div class="form-group">
-                  <label for="producer">Producer</label>
-                  <input type="text" class="form-control" name="producer" placeholder="Producer" required>
+                  <label for="prodDesc">Descrizione</label>
+                  <input type="text" class="form-control" name="prodDesc" placeholder="Descrizione prodotto" required>
                 </div>
                 <div class="form-group">
-                  <label for="price">Price</label>
-                  <input type="text" class="form-control" name="price" placeholder="30" required>
+                  <label for="producer">Produttore</label>
+                  <input type="text" class="form-control" name="producer" placeholder="Produttore" required>
                 </div>
-                <button type="submit" class="btn btn-primary" id="confirmAddProduct">Submit</button>
+                <div class="form-group">
+                  <label for="price">Prezzo</label>
+                  <input type="number" step="0.01" min=1 class="form-control" name="price" placeholder="30.00" required>
+                </div>
+                <div class="form-group">
+                  <label for="qty">Quantità</label>
+                  <input type="number" class="form-control" min=1 name="qty" placeholder="10" required>
+                </div>
+                <div class="form-group">
+                  <label for="console">Console</label>
+                  <select class="form-control" name="console" required>
+                    <option>PS4</option>
+                    <option>XBOX ONE</option>
+                    <option>PC</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-primary" id="confirmAddProduct">Aggiungi</button>
               </form>
             </div>
           </div>

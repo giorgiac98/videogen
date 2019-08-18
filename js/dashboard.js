@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    initEvents();
+    //initEvents();
 });
 
 function initEvents(){
