@@ -1,0 +1,9 @@
+https://w3guy.com/integrate-postgresql-database-xampp-windows/
+
+Uncomment the following lines in php.ini
+extension=pgsql
+extension=pdo_pgsql
+
+Add the following lines in php.ini
+extension=php_pdo_pgsql.dll
+extension=php_pgsql.dll

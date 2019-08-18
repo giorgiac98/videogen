@@ -1,21 +1,3 @@
--- Table: public.console
-
--- DROP TABLE public.console;
-
-CREATE TABLE public.console
-(
-    id serial NOT NULL,
-    nome character varying(20) COLLATE pg_catalog."default" NOT NULL,
-    CONSTRAINT console_pkey PRIMARY KEY (id)
-)
-WITH (
-    OIDS = FALSE
-)
-TABLESPACE pg_default;
-
-ALTER TABLE public.console
-    OWNER to postgres;
-
 -- Table: public.videogiochi
 
 -- DROP TABLE public.videogiochi;
@@ -27,6 +9,9 @@ CREATE TABLE public.videogiochi
     descrizione text COLLATE pg_catalog."default",
     produttore character varying(20) COLLATE pg_catalog."default",
     img_path character varying(200) COLLATE pg_catalog."default" NOT NULL,
+    prezzo real NOT NULL,
+    qta integer NOT NULL,
+    console character varying(50) COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT videogiochi_pkey PRIMARY KEY (id)
 )
 WITH (
@@ -64,37 +49,6 @@ TABLESPACE pg_default;
 ALTER TABLE public.utenti
     OWNER to postgres;
 
--- Table: public.giochi_console
-
--- DROP TABLE public.giochi_console;
-
-CREATE TABLE public.giochi_console
-(
-    id serial NOT NULL,
-    id_gioco integer NOT NULL,
-    id_console integer NOT NULL,
-    prezzo real NOT NULL,
-    qta integer NOT NULL,
-    CONSTRAINT giochi_console_pkey PRIMARY KEY (id),
-    CONSTRAINT giochi_console_id_gioco_id_console_key UNIQUE (id_gioco, id_console)
-,
-    CONSTRAINT giochi_console_id_console_fkey FOREIGN KEY (id_console)
-        REFERENCES public.console (id) MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE NO ACTION,
-    CONSTRAINT giochi_console_id_gioco_fkey FOREIGN KEY (id_gioco)
-        REFERENCES public.videogiochi (id) MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE NO ACTION
-)
-WITH (
-    OIDS = FALSE
-)
-TABLESPACE pg_default;
-
-ALTER TABLE public.giochi_console
-    OWNER to postgres;
-
 -- Table: public.ordini
 
 -- DROP TABLE public.ordini;
@@ -127,13 +81,11 @@ CREATE TABLE public.ordini_giochi
 (
     id serial NOT NULL,
     id_ordine integer NOT NULL,
-    id_gioco_console integer NOT NULL,
     qta integer NOT NULL,
+    id_gioco integer NOT NULL,
     CONSTRAINT ordini_giochi_pkey PRIMARY KEY (id),
-    CONSTRAINT ordini_giochi_id_ordine_id_gioco_console_key UNIQUE (id_ordine, id_gioco_console)
-,
-    CONSTRAINT ordini_giochi_id_gioco_console_fkey FOREIGN KEY (id_gioco_console)
-        REFERENCES public.giochi_console (id) MATCH SIMPLE
+    CONSTRAINT ordini_giochi_id_fkey FOREIGN KEY (id)
+        REFERENCES public.videogiochi (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION,
     CONSTRAINT ordini_giochi_id_ordine_fkey FOREIGN KEY (id_ordine)
