@@ -90,9 +90,9 @@
             <tbody>
               <?php
               require_once 'db/connect.php';
-              $query = $db->prepare("SELECT * FROM videogiochi v 
-                JOIN giochi_console g ON v.cod = g.cod_gioco
-                JOIN console c ON c.cod = g.cod_console");
+              $query = $db->prepare("SELECT * FROM videogiochi v
+                JOIN giochi_console g ON v.id = g.id_gioco
+                JOIN console c ON c.id = g.id_console");
               $query->execute();
               $i = 1;
               while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
