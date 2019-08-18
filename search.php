@@ -1,5 +1,5 @@
 <?php
-  session_start();
+  session_start();//
 ?>
 <!doctype html>
 <html lang="it">
@@ -43,7 +43,7 @@
           echo '<a href="product.php?cod=' . $games['cod'] . '">
                 <h4 class="card-title">' . $games['titolo'] . '</h4></a>';
           echo '<h5>' . $games['produttore'] . '</h5>';
-          
+
           $query2 = $db->prepare(
             "SELECT * FROM giochi_console g
             JOIN console c ON c.cod = g.cod_console
@@ -62,7 +62,7 @@
           echo '<h4>La ricerca non ha prodotto risultati.</h4>';
       }
       ?>
-          
+
     </div>
   </div><!-- /.container -->
   <!-- FOOTER -->
