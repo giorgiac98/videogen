@@ -62,9 +62,9 @@
               <select class="custom-select" id="inputGroupConsole" onfocus="prev()" onchange="display()">
                 <option selected>Scegli...</option>
                 <?php
-                  $query2->execute([$_GET['id']]);
+                  $query2->execute([$_GET['titolo']]);
                   while ($console_price = $query2->fetch(PDO::FETCH_ASSOC)) {
-                    echo '<option value="' . $console_price['id_console'] .'">' . $console_price['nome'] . '</option>';
+                    echo '<option value="' . $console_price['id'] .'">' . $console_price['console'] . '</option>';
                   }
                 ?>
               </select>
@@ -78,24 +78,19 @@
                 <option value="4">4</option>
                 <option value="5">5</option>
               </select>
-              <div>
-                <?php
-                  $query2->execute([$_GET['id']]);
-                  while ($console_price = $query2->fetch(PDO::FETCH_ASSOC)) {
-                      echo '<div style="display: ';
-                      if((isset($_GET['cons'])) && $_GET['cons'] ==  $console_price['id_console']){
-                        echo 'block;"';
-                      }else{
-                        echo 'none;"';
-                      }
-                      echo' id="price-' . $console_price['id_console'] . '">';
-                      echo '<p>Prezzo  € ' . $console_price['prezzo'] . '</p>';
-                      echo '</div>';
-                  }
-                 ?>
-              </div>
             </div>
-            <a class="btn btn-success" href="#" role="button">Ordina</a>
+            <div>
+              <?php
+                $query2->execute([$_GET['titolo']]);
+                while ($console_price = $query2->fetch(PDO::FETCH_ASSOC)) {
+                    echo '<div  class="mb-4" style="display: none;"';
+                    echo' id="price-' . $console_price['id'] . '">';
+                    echo '<h5>Prezzo  € ' . $console_price['prezzo'] . '</h5>';
+                    echo '</div>';
+                }
+               ?>
+            </div>
+            <button id="order" class="btn btn-success" href="#" type="button" disabled>Ordina</button>
           </div>
         </div>
       </div>
@@ -107,6 +102,9 @@
     id_console = document.getElementById("inputGroupConsole").value;
     if(id_console != "Scegli..."){
       document.getElementById("price-"+ id_console).style.display = "block";
+      document.getElementById("order").disabled = false;
+    }else{
+      document.getElementById("order").disabled = true;
     }
     if(previous != "Scegli..."){
       document.getElementById("price-"+ previous).style.display = "none";
