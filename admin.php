@@ -7,15 +7,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Jekyll v3.8.5">
     <title>Admin</title>
-
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
     <!-- Custom styles for this template -->
     <link href="css/dashboard.css" rel="stylesheet">
     <link href="css/videogen.css" rel="stylesheet">
@@ -85,8 +82,9 @@
                 <th scope="col">Titolo</th>
                 <th scope="col">Produttore</th>
                 <th scope="col">Console</th>
+                <th scope="col">Prezzo</th>
                 <th scope="col">Quantità</th>
-                <th scope="col">Modifica</th>
+                <th scope="col">Azioni</th>
               </tr>
             </thead>
             <tbody>
@@ -101,9 +99,11 @@
                 echo '<td>' . $row['titolo'] . '</td>';
                 echo '<td>' . $row['produttore'] . '</td>';
                 echo '<td>' . $row['console'] . '</td>';
+                echo '<td>€' . $row['prezzo'] . '</td>';
                 echo '<td>' . $row['qta'] . '</td>';
-                echo '<td> <button type="button" class="btn btn-primary btn-sm"><i class="fas fa-wrench"></i></button>
-                      <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                echo '<td>
+                      <button type="button" class="btn btn-outline-success btn-sm"><i class="fas fa-wrench"></i> Modifica</button>
+                      <button type="button" class="btn btn-outline-danger btn-sm"><i class="fas fa-trash"></i> Elimina</button>
                       </td>';
                 echo '</tr>';
                 $i = $i + 1;
@@ -132,6 +132,7 @@
                 <th scope="col">Indirizzo</th>
                 <th scope="col">Telefono</th>
                 <th scope="col">email</th>
+                <th scope="col">Azioni</th>
               </tr>
             </thead>
             <tbody>
@@ -143,12 +144,15 @@
               while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
                 echo '<tr>';
                 echo '<th scope="row">' . $i . '</th>';
-                echo '<td>' . $row['utente'] . '</td>';
+                echo '<td>' . $row['username'] . '</td>';
                 echo '<td>' . $row['nome'] . '</td>';
                 echo '<td>' . $row['cognome'] . '</td>';
                 echo '<td>' . $row['indirizzo'] . '</td>';
                 echo '<td>' . $row['telefono'] . '</td>';
                 echo '<td>' . $row['email'] . '</td>';
+                echo '<td>
+                      <button type="button" class="btn btn-outline-danger btn-sm"><i class="fas fa-trash"></i> Elimina</button>
+                      </td>';
                 echo '</tr>';
                 $i = $i + 1;
               }
