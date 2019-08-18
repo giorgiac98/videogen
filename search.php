@@ -30,25 +30,25 @@
       if ((isset($_GET['game'])) && ($_GET['game'])){
         require_once 'db/connect.php';
         echo "<h4>Hai cercato: " . $_GET['game'] . '</h4>';
-        $query = $db->prepare("SELECT * FROM videogiochi");
-        $query->execute();
+        $query = $db->prepare("SELECT * FROM videogiochi where lower(titolo) like '%' || ? || '%'");
+        $query->execute([$_GET['game']]);
         //TODO unificare la card in un unico gioco e vedere i tre prezzi per ogni console
         while ($games = $query->fetch(PDO::FETCH_ASSOC)) {
           echo '<div class="col-lg-4 col-md-6 mb-4">
                   <div class="card h-100">
-                    <a href="product.php?cod=' . $games['cod'] . '">
+                    <a href="product.php?id=' . $games['id'] . '">
                       <img class="card-img-top" src="'.$games['img_path'].'" alt="">
                     </a>
                     <div class="card-body">';
-          echo '<a href="product.php?cod=' . $games['cod'] . '">
+          echo '<a href="product.php?id=' . $games['id'] . '">
                 <h4 class="card-title">' . $games['titolo'] . '</h4></a>';
           echo '<h5>' . $games['produttore'] . '</h5>';
 
           $query2 = $db->prepare(
             "SELECT * FROM giochi_console g
-            JOIN console c ON c.cod = g.cod_console
-            WHERE cod_gioco = ?");
-          $query2->execute([$games['cod']]);
+            JOIN console c ON c.id = g.id_console
+            WHERE id_gioco = ?");
+          $query2->execute([$games['id']]);
           while ($console_price = $query2->fetch(PDO::FETCH_ASSOC)) {
             echo '<p>' . $console_price['nome'];
             echo ' € ' . $console_price['prezzo'] . '</p>';

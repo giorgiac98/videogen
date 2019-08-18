@@ -6,14 +6,20 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>SUCCESS!!!!!!!!!!!!!!!!!!!!!!</title>
+    <title>Esito Registrazione</title>
   </head>
   <body class="text-center">
     <?php
+      if(!isset($_SESSION['pdoex_error'])){
         echo 'Registration Successful!';
         echo 'Welcome aboard, ' . $user;
         echo 'You will be redirected shortly.';
-        sleep(5);
+      }else{
+        echo "Yeah, this is an error. You will be redirected shortly.";
+        echo $_SESSION['pdoex_error'];
+        unset($_SESSION['pdoex_error']);
+      }
+        sleep(10);
         header("Location: ../index.php");
     ?>
   </body>

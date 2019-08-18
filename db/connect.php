@@ -1,8 +1,8 @@
 <?php
-    session_start();
+    //session_start();// non so perché ma se non commento viene fuori una NOTICE sulla pagina
 
     $host = "localhost";
-    $dbname = "postgres";
+    $dbname = "videogen";
     $user = "postgres";
     $password = "postgres";
 

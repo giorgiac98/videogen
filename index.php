@@ -91,7 +91,7 @@
 
   <div class="container marketing">
     <h1>Catalogo Videogiochi</h1>
-    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <ul class="nav nav-pills mb-4 mt-4" id="pills-tab" role="tablist">
       <li class="nav-item">
         <a class="nav-link active" id="pills-all-tab" data-toggle="pill" href="#pills-all" role="tab" aria-controls="pills-all" aria-selected="true">Tutti</a>
       </li>
@@ -100,7 +100,7 @@
         $q->execute();
         while ($console = $q->fetch(PDO::FETCH_ASSOC)) {
           echo '<li class="nav-item">
-                  <a class="nav-link" id="pills-' . $console['cod'] . '-tab" data-toggle="pill" href="#pills-' . $console['cod'] . '" role="tab" aria-controls="pills-' . $console['cod'] . '" aria-selected="false">' . $console['nome'] . '</a>
+                  <a class="nav-link" id="pills-' . $console['id'] . '-tab" data-toggle="pill" href="#pills-' . $console['id'] . '" role="tab" aria-controls="pills-' . $console['id'] . '" aria-selected="false">' . $console['nome'] . '</a>
                 </li>';
         }
       ?>
@@ -114,19 +114,19 @@
             while ($games = $query->fetch(PDO::FETCH_ASSOC)) {
               echo '<div class="col-lg-4 col-md-6 mb-4">
                       <div class="card h-100">
-                        <a href="product.php?cod=' . $games['cod'] . '">
+                        <a href="product.php?id=' . $games['id'] . '">
                           <img class="card-img-top" src="' . $games['img_path'] . '" alt="">
                         </a>
                         <div class="card-body">';
-              echo '<a href="product.php?cod=' . $games['cod'] . '">
+              echo '<a href="product.php?id=' . $games['id'] . '">
                     <h4 class="card-title">' . $games['titolo'] . '</h4></a>';
               echo '<h5>' . $games['produttore'] . '</h5>';
 
               $query2 = $db->prepare(
                 "SELECT * FROM giochi_console g
-                JOIN console c ON c.cod = g.cod_console
-                WHERE cod_gioco = ?");
-              $query2->execute([$games['cod']]);
+                JOIN console c ON c.id = g.id_console
+                WHERE id_gioco = ?");
+              $query2->execute([$games['id']]);
               while ($console_price = $query2->fetch(PDO::FETCH_ASSOC)) {
                 echo '<p>' . $console_price['nome'];
                 echo ' € ' . $console_price['prezzo'] . '</p>';
@@ -142,25 +142,25 @@
       <?php
         $q->execute();
         while ($console = $q->fetch(PDO::FETCH_ASSOC)) {
-          echo '<div class="tab-pane fade" id="pills-' . $console['cod'] . '" role="tabpanel" aria-labelledby="pills-' . $console['cod'] . '-tab"> <div class="row">';
+          echo '<div class="tab-pane fade" id="pills-' . $console['id'] . '" role="tabpanel" aria-labelledby="pills-' . $console['id'] . '-tab"> <div class="row">';
           $query = $db->prepare("SELECT * FROM videogiochi");
           $query->execute();
           while ($games = $query->fetch(PDO::FETCH_ASSOC)) {
             echo '<div class="col-lg-4 col-md-6 mb-4">
                     <div class="card h-100">
-                      <a href="product.php?cod=' . $games['cod'] . '&cons=' . $console['cod'] . '">
+                      <a href="product.php?id=' . $games['id'] . '&cons=' . $console['id'] . '">
                         <img class="card-img-top" src="'.$games['img_path'].'" alt="">
                       </a>
                       <div class="card-body">';
-            echo '<a href="product.php?cod=' . $games['cod'] . '&cons=' . $console['cod'] . '">
+            echo '<a href="product.php?id=' . $games['id'] . '&cons=' . $console['id'] . '">
                   <h4 class="card-title">' . $games['titolo'] . '</h4></a>';
             echo '<h5>' . $games['produttore'] . '</h5>';
 
             $query2 = $db->prepare(
               "SELECT * FROM giochi_console g
-              JOIN console c ON c.cod = g.cod_console
-              WHERE cod_gioco = ? AND cod_console = ?");
-            $query2->execute([$games['cod'], $console['cod']]);
+              JOIN console c ON c.id = g.id_console
+              WHERE id_gioco = ? AND id_console = ?");
+            $query2->execute([$games['id'], $console['id']]);
             while ($console_price = $query2->fetch(PDO::FETCH_ASSOC)) {
               echo '<p>' . $console_price['nome'];
               echo ' € ' . $console_price['prezzo'] . '</p>';

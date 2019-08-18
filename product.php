@@ -3,14 +3,14 @@
   require_once 'db/connect.php';
   $query = $db->prepare(
     "SELECT * FROM videogiochi
-    WHERE cod = ?");
-  $query->execute([$_GET['cod']]);
+    WHERE id = ?");
+  $query->execute([$_GET['id']]);
   $game = $query->fetch();
   $query2 = $db->prepare(
     "SELECT * FROM giochi_console g
-    JOIN console c ON c.cod = g.cod_console
-    WHERE cod_gioco = ?");
-  $query2->execute([$_GET['cod']]);
+    JOIN console c ON c.id = g.id_console
+    WHERE id_gioco = ?");
+  $query2->execute([$_GET['id']]);
 ?>
 <!doctype html>
 <html lang="it">
@@ -47,7 +47,7 @@
     ?>
     <div class="container">
       <div class="row">
-        <div class="card-product mt-4">
+        <div class="card-product mt-5">
           <div class="col">
             <?php
               echo '<img class="card-img-top img-fluid" src="'.$game['img_path'].'" alt="">';
@@ -58,44 +58,16 @@
               echo '<h3 class="card-title">' . $game['titolo'] . '</h3>';
               echo '<h5>Descrizione</h5><p class="card-text">'. $game['descrizione'] .'</p>';
             ?>
-            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-            <?php
-              while ($console_price = $query2->fetch(PDO::FETCH_ASSOC)) {
-                echo '<li class="nav-item">
-                        <a class="nav-link';
-                if((isset($_GET['cons'])) && $_GET['cons'] ==  $console_price['cod_console']){
-                  echo ' active';
-                }
-                
-                echo '    " id="pills-' . $console_price['cod_console'] . '-tab" data-toggle="pill" href="#pills-' . $console_price['cod_console'] . '" role="tab" aria-controls="pills-' . $console_price['cod_console'] . '" aria-selected="false">' . $console_price['nome'] . '</a>
-                      </li>';
-              }
-              echo '</ul>';
-              echo '<div class="tab-content" id="pills-tabContent">';
-            
-                $query2->execute([$_GET['cod']]);
-                while ($console_price = $query2->fetch(PDO::FETCH_ASSOC)) {
-                    echo '<div class="tab-pane fade';
-                    if((isset($_GET['cons'])) && $_GET['cons'] ==  $console_price['cod_console']){
-                      echo ' show active';
-                    }
-                    echo'" id="pills-' . $console_price['cod_console'] . '" role="tabpanel" aria-labelledby="pills-' . $console_price['cod_console'] . '-tab">';
-                    echo '<p>Prezzo  € ' . $console_price['prezzo'] . '</p>';
-                    echo '</div>';
-                }
-            
-              echo '</div>';
-              ?>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <label class="input-group-text" for="inputGroupConsole">Console</label>
               </div>
-              <select class="custom-select" id="inputGroupConsole">
+              <select class="custom-select" id="inputGroupConsole" onfocus="prev()" onchange="display()">
                 <option selected>Scegli...</option>
                 <?php
-                  $query2->execute([$_GET['cod']]);
+                  $query2->execute([$_GET['id']]);
                   while ($console_price = $query2->fetch(PDO::FETCH_ASSOC)) {
-                    echo '<option value="' . $console_price['cod_console'] .'">' . $console_price['nome'] . '</option>';
+                    echo '<option value="' . $console_price['id_console'] .'">' . $console_price['nome'] . '</option>';
                   }
                 ?>
               </select>
@@ -109,6 +81,22 @@
                 <option value="4">4</option>
                 <option value="5">5</option>
               </select>
+              <div>
+                <?php
+                  $query2->execute([$_GET['id']]);
+                  while ($console_price = $query2->fetch(PDO::FETCH_ASSOC)) {
+                      echo '<div style="display: ';
+                      if((isset($_GET['cons'])) && $_GET['cons'] ==  $console_price['id_console']){
+                        echo 'block;"';
+                      }else{
+                        echo 'none;"';
+                      }
+                      echo' id="price-' . $console_price['id_console'] . '">';
+                      echo '<p>Prezzo  € ' . $console_price['prezzo'] . '</p>';
+                      echo '</div>';
+                  }
+                 ?>
+              </div>
             </div>
             <a class="btn btn-success" href="#" role="button">Ordina</a>
           </div>
@@ -116,6 +104,22 @@
       </div>
     </div>
   </body>
+  <script>
+  var previous;
+  function display() {
+    id_console = document.getElementById("inputGroupConsole").value;
+    if(id_console != "Scegli..."){
+      document.getElementById("price-"+ id_console).style.display = "block";
+    }
+    if(previous != "Scegli..."){
+      document.getElementById("price-"+ previous).style.display = "none";
+    }
+    previous = id_console;
+  }
+  function prev() {
+    previous = document.getElementById("inputGroupConsole").value;
+  }
+  </script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
