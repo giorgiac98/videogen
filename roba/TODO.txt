@@ -1,7 +1,5 @@
 NEGOZIO ELETTRONICO DI VIDEOGIOCHI (3-4)
 DA FARE:
-Accesso senza login:
-Catalogo dei videogiochi: ricerca.
 
 Accesso con login:
 Ordine.
@@ -13,10 +11,11 @@ Inserimento e modifica dei dati, degli utenti e degli ordini.
 
 FATTO:
 Base di dati:
-Videogiochi (titolo, console, prezzo, quantità disponibile in magazzino). 
-Utenti con nome e cognome, indirizzo, telefono, login e password. 
+Videogiochi (titolo, console, prezzo, quantità disponibile in magazzino).
+Utenti con nome e cognome, indirizzo, telefono, login e password.
 Ordini: utente, titoli ordinati, data, tipo di pagamento.
 
 Accesso senza login:
 Catalogo videogiochi e visualizzazione gioco.
 Registrazione di un utente.
+Catalogo dei videogiochi: ricerca.

@@ -6,7 +6,7 @@
     WHERE titolo = ?");
   $query->execute([$_GET['titolo']]);
   $game = $query->fetch();
-  $query2 = $db->prepare("SELECT id, console, prezzo FROM videogiochi WHERE titolo = ?");
+  $query2 = $db->prepare("SELECT id, console, prezzo, qta FROM videogiochi WHERE titolo = ?");
   $query2->execute([$game['titolo']]);
 ?>
 <!doctype html>
@@ -67,16 +67,6 @@
                     echo '<option value="' . $console_price['id'] .'">' . $console_price['console'] . '</option>';
                   }
                 ?>
-              </select>
-              <div class="input-group-prepend">
-                <label class="input-group-text" for="inputGroupQta">Quantità</label>
-              </div>
-              <select class="custom-select" id="inputGroupQta">
-                <option value="1" selected>1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
               </select>
             </div>
             <div>

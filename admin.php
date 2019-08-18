@@ -111,6 +111,7 @@
               ?>
             </tbody>
           </table>
+
         </div>
         <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="ord-tab">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
