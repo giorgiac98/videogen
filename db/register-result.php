@@ -19,7 +19,7 @@
         echo $_SESSION['pdoex_error'];
         unset($_SESSION['pdoex_error']);
       }
-        sleep(100);
+        sleep(10);
         header("Location: ../index.php");
     ?>
   </body>

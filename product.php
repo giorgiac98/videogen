@@ -2,15 +2,12 @@
   session_start();
   require_once 'db/connect.php';
   $query = $db->prepare(
-    "SELECT * FROM videogiochi
-    WHERE id = ?");
-  $query->execute([$_GET['id']]);
+    "SELECT DISTINCT titolo, descrizione, produttore, img_path FROM videogiochi
+    WHERE titolo = ?");
+  $query->execute([$_GET['titolo']]);
   $game = $query->fetch();
-  $query2 = $db->prepare(
-    "SELECT * FROM giochi_console g
-    JOIN console c ON c.id = g.id_console
-    WHERE id_gioco = ?");
-  $query2->execute([$_GET['id']]);
+  $query2 = $db->prepare("SELECT id, console, prezzo FROM videogiochi WHERE titolo = ?");
+  $query2->execute([$game['titolo']]);
 ?>
 <!doctype html>
 <html lang="it">
