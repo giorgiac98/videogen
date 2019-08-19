@@ -8,7 +8,7 @@
       <ul class="navbar-nav mr-auto">
         <form class="form-inline mt-2 mt-md-0 myForm" action="search.php" method="GET">
             <input class="form-control mr-sm-2" name="game" type="text" placeholder="Type a Game name" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Ricerca</button>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
       </ul>
       <?php
@@ -29,13 +29,8 @@
                         Il mio account
                      </button>
                      <div class="dropdown-menu" aria-labelledby="dropdownAccount">
-<<<<<<< HEAD
                         <a class="dropdown-item" href="personal-data.php">I miei dati</a>
                         <a class="dropdown-item" href="orders-history.php">I miei ordini</a>';
-=======
-                        <a class="dropdown-item" href="#">I miei dati</a>
-                        <a class="dropdown-item" href="#">I miei ordini</a>';
->>>>>>> 8af93eaf8016302d7d102621e8b40ce9624d5127
 
         }
         else{
@@ -45,7 +40,7 @@
                      <div class="dropdown-menu" aria-labelledby="dropdownAdmin">
                         <a class="dropdown-item" href="admin.php">Dashboard</a>';
         }
-        echo '          <a class="dropdown-item" href="db/logout.php">Logout</a>
+        echo '          <a class="dropdown-item" href="db/logout.php">Esci</a>
                      </div>
                    </div>
                 </li>
@@ -54,7 +49,7 @@
       else{
         echo '<ul class="navbar-nav mt-2 mt-md-0">
                 <li class="nav-item">
-                  <a class="btn btn-outline-success my-2 my-sm-0" href="signin.php">Login/Registrazione</a>
+                  <a class="btn btn-outline-success my-2 my-sm-0" href="signin.php">Sign in/Sign up</a>
                 </li>
               </ul>';
       }
