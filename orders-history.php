@@ -18,7 +18,7 @@
     require_once 'navbar.php';
   ?>
     <main role="main">
-      <div class="container marketing">
+      <div class="container mt-5">
         <?php
           echo $_SESSION['user'];
          ?>

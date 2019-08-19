@@ -84,13 +84,13 @@
                       <form class="form mt-3" action="##" method="post" id="changePwdForm">
                         <div class="form-group">
                             <div class="col-xs-6">
-                                <label for="old_password"><h4>Password</h4></label>
+                                <label for="old_password"><h4>Vecchia Password</h4></label>
                                 <input type="password" class="form-control" name="old_password" id="old_password" placeholder="vecchia password">
                             </div>
                         </div>
                           <div class="form-group">
                               <div class="col-xs-6">
-                                  <label for="password"><h4>Password</h4></label>
+                                  <label for="password"><h4>Nuova Password</h4></label>
                                   <input type="password" class="form-control" name="password" id="password" placeholder="nuova password">
                               </div>
                           </div>
