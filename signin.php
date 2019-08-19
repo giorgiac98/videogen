@@ -28,17 +28,17 @@
           <div class="tab-content borders" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-signin" role="tabpanel" aria-labelledby="nav-signin-tab">
               <form class="form-signin" method="post" action="db/login.php">
-                <h1 class="h3 mb-3 font-weight-normal">Welcome Back!</h1>
+                <h1 class="h3 mb-3 font-weight-normal">Bentornato!</h1>
                 <label for="inputUser" class="sr-only">Username</label>
                 <input type="text" name="user" class="form-control" placeholder="Username" required autofocus>
                 <label for="inputPassword" class="sr-only">Password</label>
                 <input type="password" name="password" class="form-control" placeholder="Password" required>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
               </form>
             </div>
             <div class="tab-pane fade" id="nav-signup" role="tabpanel" aria-labelledby="nav-signup-tab">
               <form class="form-signin" method="post" action="db/register.php">
-                <h1 class="h3 mb-3 font-weight-normal">Sign up for free</h1>
+                <h1 class="h3 mb-3 font-weight-normal">Registrati gratis!</h1>
                 <label for="inputUser" class="sr-only">Username</label>
                 <input type="text" name="user" class="form-control" placeholder="Username" required autofocus>
                 <label for="inputPassword" class="sr-only">Password</label>
@@ -53,7 +53,7 @@
                 <input type="text" name="address" class="form-control" placeholder="Via, numero, città, paese" required>
                 <label for="inputNumber" class="sr-only">Telefono</label>
                 <input type="text" name="number" class="form-control" placeholder="Numero di telefono" required>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Conferma</button>
               </form>
             </div>
           </div>
