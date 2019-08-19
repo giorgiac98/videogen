@@ -1,22 +1,20 @@
 $(document).ready(function(){
-    //initEvents();
-});
+  $('#modifyProduct').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) // Button that triggered the modal
+    var game_id = button.data('id')     // Extract info from data-id attribute
+    var row = button.parent().parent()
+    let title = row.children()[1].textContent
+    let producer = row.children()[2].textContent
+    let price = Number(row.children()[4].textContent.substr(1))
+    let qty = row.children()[5].textContent
 
-function initEvents(){
-    $("#confirmAddProduct").click( function(e){
-        let name = $(this).closest('.modal-dialog').find('input[name="productName"]');
-        let producer = $(this).closest('.modal-dialog').find('input[name="producer"]');
-        let price = $(this).closest('.modal-dialog').find('input[name="price"]');
-        alert('doing');
-        $.ajax({
-          method: 'POST',
-          url: 'db/addProduct.php',
-          data: {name : name, producer : producer, price : price},
-          success: function(data){
-            console.log(data);
-            alert('aggiunto');
-          }
-        });
-        $("#addProduct").modal('hide');
-    });
-}
+    $("#modifyDataForm input[name=prodTitle]").val(title)
+    $("#modifyDataForm input[name=producer]").val(producer)
+    $("#modifyDataForm input[name=price]").val(price)
+    $("#modifyDataForm input[name=qty]").val(qty)
+  });
+
+  $("#deleteToggle").click(function(e){
+    $('#confirmDelete').prop('disabled', function(i, v) { return !v; });
+  });
+});

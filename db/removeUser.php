@@ -10,6 +10,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['user']) && $_POST['us
   }
   catch (PDOException $e){
     echo $e->getMessage();
+    echo 'Something bad happened. You will be redirected in a few seconds';
+    sleep(5);
     header("Location: ../admin.php");
   }
   header("Location: ../admin.php");

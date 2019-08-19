@@ -104,9 +104,12 @@
                 echo '<td>' . $row['console'] . '</td>';
                 echo '<td>€' . $row['prezzo'] . '</td>';
                 echo '<td>' . $row['qta'] . '</td>';
+                $id = 'data-id="' . $row['id'] . '"';
                 echo '<td>
-                      <button type="button" class="btn btn-outline-success btn-sm"><i class="fas fa-wrench"></i> Modifica</button>
-                      <button type="button" class="btn btn-outline-danger btn-sm"><i class="fas fa-trash"></i> Elimina</button>
+                        <button type="button" class="btn btn-outline-success btn-sm"
+                          data-toggle="modal" data-target="#modifyProduct" ' . $id . '>
+                          <i class="fas fa-wrench"></i> Modifica
+                        </button>
                       </td>';
                 echo '</tr>';
                 $i = $i + 1;
@@ -210,7 +213,7 @@
                     <option>PC</option>
                   </select>
                 </div>
-                <button type="submit" class="btn btn-primary" id="confirmAddProduct">Aggiungi</button>
+                <button type="submit" class="btn btn-primary">Aggiungi</button>
               </form>
             </div>
           </div>
@@ -228,14 +231,10 @@
               </button>
             </div>
             <div class="modal-body">
-              <form action="db/modifyProduct.php" method="post">
+              <form id="modifyDataForm" action="db/modifyProduct.php" method="post">
                 <div class="form-group">
                   <label for="prodTitle">Titolo</label>
                   <input type="text" class="form-control" name="prodTitle" placeholder="Titolo" required>
-                </div>
-                <div class="form-group">
-                  <label for="prodDesc">Descrizione</label>
-                  <input type="text" class="form-control" name="prodDesc" placeholder="Descrizione prodotto" required>
                 </div>
                 <div class="form-group">
                   <label for="producer">Produttore</label>
@@ -249,16 +248,19 @@
                   <label for="qty">Quantità</label>
                   <input type="number" class="form-control" min=1 name="qty" placeholder="10" required>
                 </div>
-                <div class="form-group">
-                  <label for="console">Console</label>
-                  <select class="form-control" name="console" required>
-                    <option>PS4</option>
-                    <option>XBOX ONE</option>
-                    <option>PC</option>
-                  </select>
-                </div>
-                <button type="submit" class="btn btn-primary" id="confirmModifyProduct">Aggiungi</button>
+                <button type="submit" class="btn btn-primary float-right" id="confirmModifyProduct">Salva</button>
               </form>
+            </div>
+            <div class="modal-footer">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <input type="checkbox" id="deleteToggle">
+                  </div>
+                </div>
+                <span class="input-group-text">Clicca per abilitare l'eliminazione.</span>
+                <button type="button" class="btn btn-danger" id="confirmDelete" disabled>Elimina</button>
+              </div>
             </div>
           </div>
         </div>
