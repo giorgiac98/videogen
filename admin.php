@@ -22,11 +22,14 @@
       <a class="navbar-brand" href="index.php">VideoGen</a>
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-          <a class="btn btn-outline-success my-2 my-sm-0" href="db/logout.php" role="button">Sign out</a>
+          <a class="btn btn-outline-success my-2 my-sm-0" href="db/logout.php" role="button">Logout</a>
         </li>
       </ul>
     </nav>
-
+<?php
+  if (!isset($_SESSION['logged']) || $_SESSION['logged'] != 100)
+    header("Location: index.php");
+?>
 <div class="container-fluid">
   <div class="row">
     <nav class="col-md-2 d-none d-md-block bg-light sidebar">
@@ -152,7 +155,11 @@
                 echo '<td>' . $row['telefono'] . '</td>';
                 echo '<td>' . $row['email'] . '</td>';
                 echo '<td>
-                      <button type="button" class="btn btn-outline-danger btn-sm"><i class="fas fa-trash"></i> Elimina</button>
+                        <form action="db/removeUser.php" method="post">
+                          <button type="submit" class="btn btn-outline-danger btn-sm"
+                            name="user" value="' . $row['username'] . '">
+                            <i class="fas fa-trash"></i> Elimina</button>
+                        </form>
                       </td>';
                 echo '</tr>';
                 $i = $i + 1;
@@ -162,6 +169,8 @@
           </table>
         </div>
       </div>
+
+      <!-- ADD PRODUCT MODAL -->
       <div class="modal fade" id="addProduct" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -207,6 +216,54 @@
           </div>
         </div>
       </div>
+
+      <!-- MODIFY PRODUCT MODAL -->
+      <div class="modal fade" id="modifyProduct" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addProductLabel">Modifica prodotto</h5>
+              <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="db/modifyProduct.php" method="post">
+                <div class="form-group">
+                  <label for="prodTitle">Titolo</label>
+                  <input type="text" class="form-control" name="prodTitle" placeholder="Titolo" required>
+                </div>
+                <div class="form-group">
+                  <label for="prodDesc">Descrizione</label>
+                  <input type="text" class="form-control" name="prodDesc" placeholder="Descrizione prodotto" required>
+                </div>
+                <div class="form-group">
+                  <label for="producer">Produttore</label>
+                  <input type="text" class="form-control" name="producer" placeholder="Produttore" required>
+                </div>
+                <div class="form-group">
+                  <label for="price">Prezzo</label>
+                  <input type="number" step="0.01" min=1 class="form-control" name="price" placeholder="30.00" required>
+                </div>
+                <div class="form-group">
+                  <label for="qty">Quantità</label>
+                  <input type="number" class="form-control" min=1 name="qty" placeholder="10" required>
+                </div>
+                <div class="form-group">
+                  <label for="console">Console</label>
+                  <select class="form-control" name="console" required>
+                    <option>PS4</option>
+                    <option>XBOX ONE</option>
+                    <option>PC</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-primary" id="confirmModifyProduct">Aggiungi</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </main>
   </div>
 </div>
