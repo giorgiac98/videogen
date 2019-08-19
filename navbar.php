@@ -14,7 +14,7 @@
       <?php
       if (isset($_SESSION["logged"]) && ($_SESSION["logged"] >= 0)) {
         echo '<ul class="navbar-nav mt-2 mt-md-0">
-                <li class="nav-item"> 
+                <li class="nav-item">
                   <a class="nav-link disabled" href="#">';
         echo $_SESSION['user'];
         echo '    </a>
@@ -29,9 +29,9 @@
                         Il mio account
                      </button>
                      <div class="dropdown-menu" aria-labelledby="dropdownAccount">
-                        <a class="dropdown-item" href="#">I miei dati</a>
-                        <a class="dropdown-item" href="#">I miei ordini</a>';
-                        
+                        <a class="dropdown-item" href="personal-data.php">I miei dati</a>
+                        <a class="dropdown-item" href="orders-history.php">I miei ordini</a>';
+
         }
         else{
               echo ' <button class="btn btn-outline-success my-2 my-sm-0 dropdown-toggle" type="button" id="dropdownAdmin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
