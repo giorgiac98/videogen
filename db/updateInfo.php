@@ -10,7 +10,7 @@ if (isset($_SESSION['user'])) {
   $address = $_POST['indirizzo'];
   $number = $_POST['telefono'];
   try{
-    $sql = 'UPDATE utenti SET (nome, cognome, indirizzo, telefono, email) = (?, ?, ?, ?, ?) WHERE username = ?';
+    $sql = "UPDATE utenti SET (nome, cognome, indirizzo, telefono, email) = (?, ?, ?, ?, ?) WHERE username = ?";
     $query = $db->prepare($sql);
     $query->execute([$name, $surname, $address, $number, $email, $user]);
   }

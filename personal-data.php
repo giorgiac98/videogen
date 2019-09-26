@@ -23,8 +23,8 @@
         $query = $db->prepare("SELECT * FROM utenti WHERE username = ?");
         $query->execute([$_SESSION['user']]);
         $user = $query->fetch(PDO::FETCH_ASSOC);
-
        ?>
+
       <div class="container mt-5 bootstrap snippet">
         <div class="row">
       		<div class="col-sm-9"><h1><?php echo $user['nome'] . ' ' . $user['cognome'] ?></h1></div>
@@ -68,7 +68,7 @@
                           <div class="form-group">
                               <div class="col-xs-6">
                                   <label for="indirizzo"><h4>Indirizzo</h4></label>
-                                  <input type="text" class="form-control" id="indirizzo" placeholder="via, numero, città, paese" <?php echo 'value="' . $user['indirizzo'] . '"'?>>
+                                  <input type="text" class="form-control" name="indirizzo" id="indirizzo" placeholder="via, numero, città, paese" <?php echo 'value="' . $user['indirizzo'] . '"'?>>
                               </div>
                           </div>
                           <div class="form-group">

@@ -1,6 +1,8 @@
 <?php
-    //session_start();// non so perché ma se non commento viene fuori una NOTICE sulla pagina
-
+    if(!isset($_SESSION))
+    {
+        session_start();
+    }
     $host = "localhost";
     $dbname = "videogen";
     $user = "postgres";
