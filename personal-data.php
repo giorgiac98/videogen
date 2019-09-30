@@ -32,14 +32,13 @@
         </div>
         <div class="row">
         	<div class="col-sm-9">
-                <ul class="nav nav-tabs" role="tablist">
-                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#info">Informazioni</a></li>
-                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#password">Cambio Password</a></li>
-                  </ul>
-
-
+              <ul class="nav nav-tabs" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#info" role="tab">Informazioni</a></li>
+                  <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#password"role="tab">Cambio Password</a></li>
+              </ul>
               <div class="tab-content">
-                <div class="tab-pane active" id="info">
+                <div class="tab-pane  <?php if(!isset($_SESSION['pwd_error'])){echo 'active';}?>"
+                   id="info" role="tabpanel">
                       <form class="form mt-3" action="db/updateInfo.php" method="post" id="registrationForm">
                           <div class="form-group">
                               <div class="col-xs-6">
@@ -80,8 +79,20 @@
                   	</form>
 
                  </div><!--/tab-pane-->
-                 <div class="tab-pane" id="password">
-                      <form class="form mt-3" action="##" method="post" id="changePwdForm">
+                 <div class="tab-pane
+                 <?php
+                  if(isset($_SESSION['pwd_error'])){
+                   echo 'active';
+                   $error = true;
+                 }else{
+                   $error = false;
+                 }?>" id="password" role="tabpanel">
+                      <?php
+                        if($error){
+                          echo '<br> <div class="alert alert-danger" role="alert">' . $_SESSION['pwd_error'] . '</div>';
+                        }
+                      ?>
+                      <form class="form mt-3" action="db/updatePassword.php" method="post" id="changePwdForm">
                         <div class="form-group">
                             <div class="col-xs-6">
                                 <label for="old_password"><h4>Vecchia Password</h4></label>
@@ -96,8 +107,8 @@
                           </div>
                           <div class="form-group">
                               <div class="col-xs-6">
-                                <label for="password_verify"><h4>Verify</h4></label>
-                                  <input type="password" class="form-control" name="password_verify" id="password_verify" placeholder="ripeti nuova password">
+                                <label for="password_verify"><h4>Verifica Password</h4></label>
+                                  <input type="password" class="form-control" name="password_verify" id="password_verify" placeholder="ripeti la nuova password">
                               </div>
                           </div>
                           <div class="form-group">
