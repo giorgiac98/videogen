@@ -18,10 +18,57 @@
     require_once 'navbar.php';
   ?>
     <main role="main">
-      <div class="container mt-5">
+      <div class="container marketing">
         <?php
-          echo $_SESSION['user'];
+        //echo $_SESSION['user'];
          ?>
+         <div class="container py-5">
+             <div class="row">
+                 <div class="col-lg-7 mx-auto bg-white rounded shadow">
+
+                     <!-- Fixed header table-->
+                     <div class="table-responsive">
+                         <table class="table table-fixed">
+                             <thead>
+                                 <tr>
+                                     <th scope="col" class="col-3">Numero Ordine</th>
+                                     <th scope="col" class="col-3">Data Ordine</th>
+                                     <th scope="col" class="col-3">Spedito a</th>
+                                     <th scope="col" class="col-3">Totale</th>
+                                 </tr>
+                             </thead>
+                             <tbody>
+                                 <tr>
+                                     <th scope="row" class="col-3">1</th>
+                                     <td class="col-3">1/1/19</td>
+                                     <td class="col-3">Otto</td>
+                                     <td class="col-3">$122</td>
+                                 </tr>
+                                 <tr>
+                                     <th scope="row" class="col-3">2</th>
+                                     <td class="col-3">2/3/19</td>
+                                     <td class="col-3">Thornton</td>
+                                     <td class="col-3">$47</td>
+                                 </tr>
+                                 <tr>
+                                     <th scope="row" class="col-3">4</th>
+                                     <td class="col-3">3/7/19</td>
+                                     <td class="col-3">Williams</td>
+                                     <td class="col-3">$80</td>
+                                 </tr>
+                                 <tr>
+                                     <th scope="row" class="col-3">4</th>
+                                     <td class="col-3">19/9/19</td>
+                                     <td class="col-3">Williams</td>
+                                     <td class="col-3">$22</td>
+                                 </tr>
+                             </tbody>
+                         </table>
+                     </div><!-- End -->
+
+                 </div>
+             </div>
+         </div>
       </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
