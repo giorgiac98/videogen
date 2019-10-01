@@ -124,7 +124,6 @@
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">Gestione Ordini</h1>
           </div>
-          ORDINI
           <table class="table" id="orderTable">
             <thead class="thead-dark">
               <tr>
@@ -133,11 +132,51 @@
                 <th scope="col">Utente</th>
                 <th scope="col">Data</th>
                 <th scope="col">Tipo di Pagamento</th>
+                <th scope="col">Totale</th>
                 <th scope="col">Azioni</th>
               </tr>
             </thead>
             <tbody>
+              <?php
+              $query = $db->prepare("SELECT o.id, username, data, tipo_pagamento, totale FROM ordini o JOIN utenti u ON u.id = o.id_utente");
+              $query->execute();
+              $query2 = $db->prepare("SELECT id_ordine, qta, id_gioco, titolo, prezzo, console FROM ordini_giochi og JOIN videogiochi v on v.id = og.id_gioco WHERE id_ordine = ?");
+
+              $i = 1;
+              while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+                echo '<tr>';
+                echo '<th scope="row">' . $i . '</th>';
+                echo '<td>' . $row['id'] . '</td>';
+                echo '<td>' . $row['username'] . '</td>';
+                echo '<td>' . $row['data'] . '</td>';
+                echo '<td>' . $row['tipo_pagamento'] . '</td>';
+                echo '<td>' . $row['totale'] . '</td>';
+
+                echo '<td class="row">
+                        <button class="btn btn-outline-success btn-sm mr-2" type="button" data-toggle="collapse" data-target="#orderDetail' . $row['id'] . '" aria-expanded="false" aria-controls="orderDetail' . $row['id'] . '">
+                        <i class="fas fa-info"></i> Dettagli
+                        </button>
+                        <form action="db/removeOrder.php" method="post">
+                          <button type="submit" class="btn btn-outline-danger btn-sm"
+                            name="order" value="' . $row['id'] . '">
+                            <i class="fas fa-trash"></i> Elimina</button>
+                        </form>
+                        <div class="collapse" id="orderDetail' . $row['id'] . '">
+                          <div class="card card-body mt-2">';
+                // $query2->execute([$row['id']]); //FIXME il problema è qui
+                // while($game = $query2->fetch(PDO::FETCH_ASSOC)){
+                //
+                // }
+                echo     '</div>
+                        </div>
+                      </td>';
+                echo '</tr>';
+                $i = $i + 1;
+              }
+
+              ?>
             </tbody>
+          </table>
         </div>
         <div class="tab-pane fade" id="users" role="tabpanel" aria-labelledby="usr-tab">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
