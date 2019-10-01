@@ -1,17 +1,6 @@
 $(document).ready(function(){
   var game_id;
 
-  var url = 0;
-  var where = new URL(window.location.href).searchParams.get("where");
-  if (where == "products"){
-    console.log($('#myTab li:first-child a'))
-    $('#myTab li:first-child a').tab('show')
-  }
-  else if (where == "orders")
-    $('#myTab a[href="#orders"]').tab('show')
-  else if (where == "users")
-    $('#myTab a[href="#users"]').tab('show')
-
   // aprendo il modal di modifica, mostra le info di quel determinato prodotto
   $('#modifyProduct').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) // Button that triggered the modal
@@ -63,4 +52,13 @@ $(document).ready(function(){
         //window.location.reload();
     });
   });
+
+  var where = new URL(window.location.href).searchParams.get("where");
+  if (where == "products")
+    $('#tabs a[href="#products"]').tab('show')
+  else if (where == "orders")
+    $('#tabs a[href="#orders"]').tab('show')
+  else if (where == "users")
+    $('#tabs a[href="#users"]').tab('show')
+
 });

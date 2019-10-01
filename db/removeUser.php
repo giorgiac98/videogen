@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['user']) && $_POST['us
     sleep(5);
     header("Location: ../admin.php");
   }
-  header("Location: ../admin.php");
+  header("Location: ../admin.php?where=users");
 }
 else{
   header("Location: ../index.php");
