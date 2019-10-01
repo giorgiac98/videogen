@@ -34,7 +34,7 @@
   <div class="row">
     <nav class="col-md-2 d-none d-md-block bg-light sidebar">
       <div class="sidebar-sticky">
-        <ul class="nav flex-column nav-tabs" role="tablist">
+        <ul class="nav flex-column nav-tabs" id="tabs" role="tablist">
           <li class="nav-item">
             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
               <i class="fas fa-home"></i>

@@ -8,6 +8,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           VALUES(?, ?, ?, ?, ?, ?, ?)");
   $query->execute([$_POST['prodTitle'], $_POST['prodDesc'], $img, $_POST['producer'],
                   $_POST['price'], $_POST['qty'], $_POST['console']]);
-  header("Location: ../admin.php");
+  header("Location: ../admin.php?where=products");
 }
 ?>
