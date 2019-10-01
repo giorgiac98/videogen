@@ -125,6 +125,19 @@
             <h1 class="h2">Gestione Ordini</h1>
           </div>
           ORDINI
+          <table class="table" id="orderTable">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Ordine</th>
+                <th scope="col">Utente</th>
+                <th scope="col">Data</th>
+                <th scope="col">Tipo di Pagamento</th>
+                <th scope="col">Azioni</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
         </div>
         <div class="tab-pane fade" id="users" role="tabpanel" aria-labelledby="usr-tab">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
