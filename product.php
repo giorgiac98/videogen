@@ -57,7 +57,7 @@
               echo '<h5>Descrizione</h5><p class="card-text">'. $game['descrizione'] .'</p>';
             ?>
             <div class="input-group mb-3">
-              <div class="input-group-prepend">
+              <div class="input-group-prepend mr-2">
                 <label class="input-group-text" for="selectConsole">Console</label>
               </div>
 
@@ -65,7 +65,7 @@
                 <?php
                   $query2->execute([$_GET['titolo']]);
                   while ($console_price = $query2->fetch(PDO::FETCH_ASSOC)) {
-                    echo '<label class="btn btn-secondary">';
+                    echo '<label class="btn btn-success mr-2">';
                     echo '<input type="radio" name="console" autocomplete="off" id="' . $console_price['id'] .'">' . $console_price['console'];
                     echo '</label>';
                   }
@@ -82,7 +82,8 @@
                     echo '</div>';
                 }
                ?>
-            </div>
+             </div>
+             <!-- FIXME che ne dici se invece di 'Ordina' mettiamo 'Aggiungi al carrello' ? -->
             <button id="addToCart" class="btn btn-success btn-lg" href="#" type="button" disabled>Ordina</button>
           </div>
         </div>
