@@ -127,7 +127,6 @@
           <table class="table" id="orderTable">
             <thead class="thead-dark">
               <tr>
-                <th scope="col">#</th>
                 <th scope="col">Ordine</th>
                 <th scope="col">Utente</th>
                 <th scope="col">Data</th>
@@ -141,11 +140,9 @@
               $query = $db->prepare("SELECT o.id, username, data, tipo_pagamento, totale FROM ordini o JOIN utenti u ON u.id = o.id_utente");
               $query->execute();
 
-              $i = 1;
               while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-                echo '<tr  data-toggle="collapse" data-target="#info' . $i . '">';
-                echo '<th scope="row">' . $i . '</th>';
-                echo '<td>' . $row['id'] . '</td>';
+                echo '<tr  data-toggle="collapse" data-target="#info' . $row['id'] . '">';
+                echo '<th scope="row">' . $row['id'] . '</th>';
                 echo '<td>' . $row['username'] . '</td>';
                 echo '<td>' . $row['data'] . '</td>';
                 echo '<td>' . $row['tipo_pagamento'] . '</td>';
@@ -158,21 +155,30 @@
                         </form>';
                 echo  '</td>';
                 echo '</tr>';
-                echo '<tr class="collapse" id="info' . $i . '">
-                        <td colspan="7">
+                echo '<tr class="collapse" id="info' . $row['id'] . '">
+                        <td colspan="6">
                           <div class="card">
-                            <div class="card-body">';// TODO fare le info in stile tabella
+                            <div class="card-body">
+                              <table class="table table-borderless">
+                                <tbody>';// TODO fare le info in stile tabella
                           $query2 = $db->prepare("SELECT id_ordine, og.qta as qta, id_gioco, titolo, prezzo, console FROM ordini_giochi og JOIN videogiochi v on v.id = og.id_gioco WHERE id_ordine = ?");
                           $query2->execute([$row['id']]);
                           while($game = $query2->fetch(PDO::FETCH_ASSOC)){
-                            echo $game['titolo'] . ' ' . $game['qta'] . ' x € ' . $game['prezzo'] . '<br>';
+                            echo '<tr>';
+                            echo '<th scope="row">»»</th>';
+                            echo '  <td>' . $game['titolo'] . ' </td>';
+                            echo '  <td>' . $game['console'] . ' </td>';
+                            echo '  <td>' . $game['qta'] . ' x € ' . $game['prezzo'] . ' </td>';
+                            echo '  <td>€ ' . $game['qta']*$game['prezzo']. ' </td>';
+                            echo '</tr>';
                           }
                           echo '
+                                </tbody>
+                              </table>
                             </div>
                           </div>
                         </td>
                       </tr>';
-                $i = $i + 1;
               }
 
               ?>
