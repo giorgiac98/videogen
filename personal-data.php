@@ -32,11 +32,14 @@
         </div>
         <div class="row">
         	<div class="col-sm-9">
-              <ul class="nav nav-tabs" role="tablist">
-                  <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#info" role="tab">Informazioni</a></li>
-                  <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#password"role="tab">Cambio Password</a></li>
-              </ul>
-              <div class="tab-content">
+            <div class="card">
+              <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#info" role="tab">Informazioni</a></li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#password"role="tab">Cambio Password</a></li>
+                </ul>
+              </div>
+              <div class="tab-content card-body">
                 <div class="tab-pane  <?php if(!isset($_SESSION['pwd_error'])){echo 'active';}?>"
                    id="info" role="tabpanel">
                       <form class="form mt-3" action="db/updateInfo.php" method="post" id="registrationForm">
