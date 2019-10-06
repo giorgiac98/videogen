@@ -19,3 +19,9 @@ Accesso senza login:
 Catalogo videogiochi e visualizzazione gioco.
 Registrazione di un utente.
 Catalogo dei videogiochi: ricerca.
+
+Note Lagu:
+order-history:
+- Per ora prendo i dati solo dalla tabella ordini, devo fare le query calcolare
+  la lista dei giochi e il totale.
+- Il collapsible panel nella colonna Prodotti espande/chiude tutte le righe

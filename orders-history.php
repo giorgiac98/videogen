@@ -12,67 +12,110 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="css/carousel.css" rel="stylesheet">
     <link href="css/videogen.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   </head>
   <body>
+    <table class="table table-hover">
   <?php
     require_once 'navbar.php';
   ?>
     <main role="main">
+
       <div class="container marketing">
         <?php
         //echo $_SESSION['user'];
          ?>
-         <div class="container py-5">
-             <div class="row">
-                 <div class="col-lg-7 mx-auto bg-white rounded shadow">
+      <thead>
+        <tr>
+          <th>Numero ordine </th>
+          <th>Utente</th>
+          <th>Data ordine</th>
+          <th>Prodotti</th>
+          <th>Totale</th>
+        </tr>
+      </thead>
 
-                     <!-- Fixed header table-->
-                     <div class="table-responsive">
-                         <table class="table table-fixed">
-                             <thead>
-                                 <tr>
-                                     <th scope="col" class="col-3">Numero Ordine</th>
-                                     <th scope="col" class="col-3">Data Ordine</th>
-                                     <th scope="col" class="col-3">Spedito a</th>
-                                     <th scope="col" class="col-3">Totale</th>
-                                 </tr>
-                             </thead>
-                             <tbody>
-                                 <tr>
-                                     <th scope="row" class="col-3">1</th>
-                                     <td class="col-3">1/1/19</td>
-                                     <td class="col-3">Otto</td>
-                                     <td class="col-3">$122</td>
-                                 </tr>
-                                 <tr>
-                                     <th scope="row" class="col-3">2</th>
-                                     <td class="col-3">2/3/19</td>
-                                     <td class="col-3">Thornton</td>
-                                     <td class="col-3">$47</td>
-                                 </tr>
-                                 <tr>
-                                     <th scope="row" class="col-3">4</th>
-                                     <td class="col-3">3/7/19</td>
-                                     <td class="col-3">Williams</td>
-                                     <td class="col-3">$80</td>
-                                 </tr>
-                                 <tr>
-                                     <th scope="row" class="col-3">4</th>
-                                     <td class="col-3">19/9/19</td>
-                                     <td class="col-3">Williams</td>
-                                     <td class="col-3">$22</td>
-                                 </tr>
-                             </tbody>
-                         </table>
-                     </div><!-- End -->
+         <?php
+         $query = $db->prepare("SELECT DISTINCT id,id_utente,data FROM ordini ORDER BY data");
+         $query->execute();
+         while ($games = $query->fetch(PDO::FETCH_ASSOC)) {
+           echo'<tr><td>';
+           echo '<div class="col-sm-4">'. $games['id'] . '</div>';
+           echo '</td><td>';
+           echo '<div class="col-sm-4">'. $games['id_utente'] . '</div>';
+           echo '</td><td>';
+           echo '<div class="col-sm-4">'. $games['data'] . '</div>';
+           echo '</td><td>';
+           echo '<div class="col-sm-4">
+           <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse1">Visualizza prodotti</a>
+            </h4>
+           </div>
+              <div id="collapse1" class="panel-collapse collapse">
+                <div class="col-sm-8">prodotto 1</div>
+                <div class="col-sm-8">prodotto 2</div>
+           </div></div>';
+           echo '</td><td>';
+           echo "$$$";
+           echo '</td></tr>';
 
-                 </div>
-             </div>
-         </div>
+         }
+         ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
+  <!--<p><center>Premi il numero ordine per visualizzare i prodotti ordinati</center></p>-->
 </html>
+
+
+
+
+<!--
+<div class="accordion" id="accordionExample">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Prodotti
+        </button>
+      </h2>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+        Prodotto 1
+        Prodotto 2
+        Prodotto 3
+        Prodotto n
+      </div>
+    </div>
+-->
+
+<!-- while ($games = $query->fetch(PDO::FETCH_ASSOC)) { -->
+
+<!--      <div class="row">
+           <div class="col-sm-4">ID ordine</div>
+           <div class="col-sm-4">Data</div>
+           <div class="col-sm-4">Totale</div>
+         </div>
+-->
