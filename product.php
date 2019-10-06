@@ -61,7 +61,7 @@
                 <label class="input-group-text" for="selectConsole">Console</label>
               </div>
 
-              <div class="btn-group btn-group-lg btn-group-toggle" data-toggle="buttons" role="group" id="selectConsole">
+              <div class="btn-group btn-group-toggle" data-toggle="buttons" role="group" id="selectConsole">
                 <?php
                   $query2->execute([$_GET['titolo']]);
                   while ($console_price = $query2->fetch(PDO::FETCH_ASSOC)) {
@@ -83,7 +83,7 @@
                 }
                ?>
              </div>
-            <button id="addToCart" class="btn btn-success btn-lg" href="#" type="button" disabled>Aggiungi al carrello</button>
+            <button id="addToCart" class="btn btn-success" href="#" type="button" disabled>Aggiungi al carrello</button>
           </div>
         </div>
       </div>
