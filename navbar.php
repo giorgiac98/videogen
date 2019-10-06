@@ -7,8 +7,8 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
         <form class="form-inline mt-2 mt-md-0 myForm" action="search.php" method="GET">
-            <input class="form-control mr-sm-2" name="game" type="text" placeholder="Type a Game name" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <input class="form-control mr-sm-2" name="game" type="text" placeholder="Titolo del gioco" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cerca</button>
         </form>
       </ul>
       <?php

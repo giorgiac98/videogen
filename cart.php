@@ -41,30 +41,26 @@
            <div class="card shopping-cart">
                     <div class="card-header bg-dark text-light">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        Shopping cart
-                        <a href="" class="btn btn-outline-info btn-sm pull-right">Continiu shopping</a>
+                        Carrello
+                        <a href="index.php" class="btn btn-outline-success btn-sm pull-right">Torna al catalogo</a>
                         <div class="clearfix"></div>
                     </div>
                     <div class="card-body">
                             <!-- PRODUCT -->
-                            <div class="row">
+                            <div class="row align-items-center">
                                 <div class="col-12 col-sm-12 col-md-2 text-center">
                                         <img class="img-responsive" src="http://placehold.it/120x80" alt="prewiew" width="120" height="80">
                                 </div>
                                 <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
                                     <h4 class="product-name"><strong>Product Name</strong></h4>
-                                    <h4>
-                                        <small>Product description</small>
-                                    </h4>
                                 </div>
-                                <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
-                                    <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
-                                        <h6><strong>25.00 <span class="text-muted">x</span></strong></h6>
+                                <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row align-items-center">
+                                    <div class="col-3 col-sm-3 col-md-6 text-md-right">
+                                        <h6><strong>€ 25.00</strong></h6>
                                     </div>
                                     <div class="col-4 col-sm-4 col-md-4">
                                         <div class="quantity">
-                                            <input type="number" step="1" max="99" min="1" value="1" title="Qty" class="qty"
-                                                   size="4">
+                                            <input type="number" step="1" max="10" min="1" value="1" title="Qty" class="qty" size="4">
                                         </div>
                                     </div>
                                     <div class="col-2 col-sm-2 col-md-2 text-right">
@@ -77,19 +73,16 @@
                             <hr>
                             <!-- END PRODUCT -->
                             <!-- PRODUCT -->
-                            <div class="row">
+                            <div class="row align-items-center">
                                 <div class="col-12 col-sm-12 col-md-2 text-center">
                                         <img class="img-responsive" src="http://placehold.it/120x80" alt="prewiew" width="120" height="80">
                                 </div>
                                 <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
                                     <h4 class="product-name"><strong>Product Name</strong></h4>
-                                    <h4>
-                                        <small>Product description</small>
-                                    </h4>
                                 </div>
-                                <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
-                                    <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
-                                        <h6><strong>25.00 <span class="text-muted">x</span></strong></h6>
+                                <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row align-items-center">
+                                    <div class="col-3 col-sm-3 col-md-6 text-md-right">
+                                        <h6><strong>€ 25.00</strong></h6>
                                     </div>
                                     <div class="col-4 col-sm-4 col-md-4">
                                         <div class="quantity">
@@ -106,38 +99,25 @@
                             </div>
                             <hr>
                             <!-- END PRODUCT -->
-                        <div class="pull-right">
-                            <a href="" class="btn btn-outline-secondary pull-right">
-                                Update shopping cart
-                            </a>
-                        </div>
+
                     </div>
                     <div class="card-footer">
-                        <div class="coupon col-md-5 col-sm-5 no-padding-left pull-left">
-                            <div class="row">
-                                <div class="col-6">
-                                    <input type="text" class="form-control" placeholder="cupone code">
-                                </div>
-                                <div class="col-6">
-                                    <input type="submit" class="btn btn-default" value="Use cupone">
-                                </div>
-                            </div>
+                        <div class="coupon col-md-5 col-sm-5 no-padding-left pull-left" style="margin: 10px">
+                          <div class="pull-left">
+                              <a href="" class="btn btn-outline-success pull-right">
+                                  Aggiorna carrello
+                              </a>
+                          </div>
                         </div>
                         <div class="pull-right" style="margin: 10px">
-                            <a href="" class="btn btn-success pull-right">Checkout</a>
+                            <a href="checkout.php" class="btn btn-success pull-right ml-2">Checkout</a>
                             <div class="pull-right" style="margin: 5px">
-                                Total price: <b>50.00€</b>
+                                Totale : <b>€ 50.00</b>
                             </div>
                         </div>
                     </div>
                 </div>
         </div>
-
-        <!-- FOOTER -->
-        <footer class="container">
-          <p class="float-right"><a href="#">Back to top</a></p>
-          <p>&copy; 2017-2019 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-        </footer>
       </main>
       <script src="https://use.fontawesome.com/c560c025cf.js"></script>
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

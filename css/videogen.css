@@ -74,3 +74,17 @@ a:hover{
    border-top-left-radius: 4px;
    border-bottom-left-radius: 4px;
 }
+
+.custom-control-input:checked~.custom-control-label::before {
+    color: #fff;
+    border-color: #28a745;
+    background-color: #28a745;
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #28a745;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem #28a7455e;
+}
