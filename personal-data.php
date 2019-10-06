@@ -25,7 +25,7 @@
         $user = $query->fetch(PDO::FETCH_ASSOC);
        ?>
 
-      <div class="container mt-5 bootstrap snippet">
+      <div class="container mt-5">
         <div class="row">
       		<div class="col-sm-9"><h1><?php echo $user['nome'] . ' ' . $user['cognome'] ?></h1></div>
         	<div class="col-sm-3"><img class="img-fluid" src="media/users.png"></div>

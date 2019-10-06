@@ -160,7 +160,7 @@
                           <div class="card">
                             <div class="card-body">
                               <table class="table table-borderless">
-                                <tbody>';// TODO fare le info in stile tabella
+                                <tbody>';
                           $query2 = $db->prepare("SELECT id_ordine, og.qta as qta, id_gioco, titolo, prezzo, console FROM ordini_giochi og JOIN videogiochi v on v.id = og.id_gioco WHERE id_ordine = ?");
                           $query2->execute([$row['id']]);
                           while($game = $query2->fetch(PDO::FETCH_ASSOC)){
@@ -172,7 +172,7 @@
                             echo '  <td>€ ' . $game['qta']*$game['prezzo']. ' </td>';
                             echo '</tr>';
                           }
-                          echo '
+                            echo '
                                 </tbody>
                               </table>
                             </div>
@@ -180,7 +180,6 @@
                         </td>
                       </tr>';
               }
-
               ?>
             </tbody>
           </table>
