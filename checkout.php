@@ -79,7 +79,7 @@
            ?>
           <div class="col-md-8 order-md-1">
             <h4 class="mb-3">Indirizzo di spedizione</h4>
-            <form class="needs-validation" novalidate>
+            <form class="needs-validation" action="db/newOrder.php" novalidate>
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <label for="firstName">Nome</label>

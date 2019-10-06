@@ -83,8 +83,7 @@
                 }
                ?>
              </div>
-             <!-- FIXME che ne dici se invece di 'Ordina' mettiamo 'Aggiungi al carrello' ? -->
-            <button id="addToCart" class="btn btn-success btn-lg" href="#" type="button" disabled>Ordina</button>
+            <button id="addToCart" class="btn btn-success btn-lg" href="#" type="button" disabled>Aggiungi al carrello</button>
           </div>
         </div>
       </div>

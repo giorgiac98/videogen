@@ -50,10 +50,10 @@
                  echo '<div class="col-sm-4">
                  <div class="panel-heading">
                   <h4 class="panel-title">
-                    <a data-toggle="collapse" href="#collapse1">Visualizza prodotti</a>
+                    <a data-toggle="collapse" href="#collapse'. $games['id'] . '">Visualizza prodotti</a>
                   </h4>
                  </div>
-                    <div id="collapse1" class="panel-collapse collapse">
+                    <div id="collapse'. $games['id'] . '" class="panel-collapse collapse">
                       <div class="col-sm-8">prodotto 1</div>
                       <div class="col-sm-8">prodotto 2</div>
                  </div></div>';
