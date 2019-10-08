@@ -38,35 +38,32 @@
             <tbody>
                <?php
 
-               $query = $db->prepare(" SELECT ordini.id AS id,id_utente,data,titolo,prezzo,(prezzo*ordini_giochi.qta) AS tot
+               $query = $db->prepare(" SELECT ordini.id AS id,id_utente,data,titolo,prezzo,(prezzo*ordini_giochi.qta) AS tot,ordini_giochi.qta AS num,console
                                         FROM videogiochi,utenti,ordini,ordini_giochi
                                         WHERE id_utente = utenti.id AND id_ordine = ordini.id AND id_gioco = videogiochi.id");
                $query->execute();
 
                while ($games = $query->fetch(PDO::FETCH_ASSOC)) {
                  echo'<tr><td>';
-                 echo '<div class="col-sm-4">'. $games['id'] . '</div>';
+                 echo '<div class="col-sm-2">'. $games['id'] . '</div>';
                  echo '</td><td>';
-                 echo '<div class="col-sm-4">'. $games['id_utente'] . '</div>';
+                 echo '<div class="col-sm-2">'. $games['id_utente'] . '</div>';
                  echo '</td><td>';
                  echo '<div class="col-sm-4">'. $games['data'] . '</div>';
                  echo '</td><td>';
-                 echo '<div class="col-sm-4">
+                 echo '<div class="col-sm-16">
                  <div class="panel-heading">
                   <h4 class="panel-title">
                     <a data-toggle="collapse" href="#collapse'. $games['id'] . '">Visualizza prodotti</a>
                   </h4>
                  </div>
                     <div id="collapse'. $games['id'] . '" class="panel-collapse collapse">';
-
-
-                echo '<div class="col-sm-8">' . $games['titolo'] . '</div>';
-
+                    echo '<div class="col-sm-16">' . $games['titolo'],'  ','(',$games['console'],')','   x',$games['num']. '</div>';
 
                  echo '</div></div>';
                  echo '</td><td>';
-
-                 echo '<div class="col-sm-8">' . $games['tot'] . '</div>';
+                 $tmp = $games['tot'];
+                 echo '<div class="col-sm-8">' . bcmul($tmp,1,2)  . '</div>';
                  echo '</td></tr>';
 
                }
