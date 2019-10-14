@@ -81,6 +81,8 @@
                                         </div>
                                         <div class="col-4 col-sm-4 col-md-4">
                                             <div class="quantity">
+                                              <!-- FIXME moltiplicare prezzo per quantità
+                                               secondo me possiamo anche fare a meno della qta.. -->
                                                 <input type="number" step="1" max="<?php echo $game['qta']; ?>" min="1" value="1" class="qty" size="4">
                                             </div>
                                         </div>
@@ -107,7 +109,9 @@
                           </div>
                         </div>
                         <div class="pull-right" style="margin: 10px">
-                            <a href="checkout.php" class="btn btn-success pull-right ml-2" id="checkoutButton">Checkout</a>
+                            <a href="checkout.php" class="btn btn-success pull-right ml-2
+                            <?php if(count($_SESSION['cart']) == 0) echo 'disabled'; ?>
+                            " id="checkoutButton">Checkout</a>
                             <div class="pull-right" style="margin: 5px">
                                 Totale : <b>€ <?php echo $totale; ?></b>
                             </div>
