@@ -81,7 +81,6 @@
                                         </div>
                                         <div class="col-4 col-sm-4 col-md-4">
                                             <div class="quantity">
-<<<<<<< HEAD
                                                 <input type="number" step="1" max="<?php echo $game['qta']; ?>" min="1" value="1" class="qty" size="4">
                                             </div>
                                         </div>
@@ -91,15 +90,6 @@
                                                 <i class="fa fa-trash" aria-hidden="true"></i>
                                             </button>
                                           </form>
-=======
-                                                <input type="number" step="1" max="<?php echo $game['qta']; ?>" min="1" value="1" title="Qty" class="qty" size="4">
-                                            </div>
-                                        </div>
-                                        <div class="col-2 col-sm-2 col-md-2 text-right">
-                                            <button type="button" class="btn btn-outline-danger btn-xs">
-                                                <i class="fa fa-trash" aria-hidden="true"></i>
-                                            </button>
->>>>>>> 1148760d92e7db63b9d98c9a60f9ba993a542d27
                                         </div>
                                     </div>
                                 </div>
