@@ -109,9 +109,7 @@
                           </div>
                         </div>
                         <div class="pull-right" style="margin: 10px">
-                            <a href="checkout.php" class="btn btn-success pull-right ml-2
-                            <?php if(count($_SESSION['cart']) == 0) echo 'disabled'; ?>
-                            " id="checkoutButton">Checkout</a>
+                            <a id="checkoutButton" href="checkout.php" class="btn btn-success pull-right ml-2 <?php if(count($_SESSION['cart']) == 0) echo 'disabled'; ?>">Checkout</a>
                             <div class="pull-right" style="margin: 5px">
                                 Totale : <b>€ <?php echo $totale; ?></b>
                             </div>

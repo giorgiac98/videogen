@@ -35,6 +35,7 @@
   <body>
     <?php
       require_once 'navbar.php';
+      $totale = 0;
     ?>
     <main role="main">
       <div class="container mt-5">
@@ -42,33 +43,29 @@
           <div class="col-md-4 order-md-2 mb-4">
             <h4 class="d-flex justify-content-between align-items-center mb-3">
               <span class="text-muted">Carrello</span>
-              <span class="badge badge-secondary badge-pill">3</span>
+              <span class="badge badge-secondary badge-pill"><?php echo count($_SESSION['cart']); ?></span>
             </h4>
             <ul class="list-group mb-3">
+              <?php
+              foreach($_SESSION['cart'] as $x){
+                  $query = $db->prepare("SELECT id, titolo, console, prezzo FROM videogiochi WHERE id = ?");
+                  $query->execute([$x]);
+                  $game = $query->fetch();
+                  $totale += $game['prezzo'];
+              ?>
               <li class="list-group-item d-flex justify-content-between lh-condensed">
-                <div>
-                  <h6 class="my-0">Nome gioco</h6>
-                  <small class="text-muted">console</small>
+                <div id="<?php echo $game['id']; ?>">
+                  <h6 class="my-0"><?php echo $game['titolo']; ?></h6>
+                  <small class="text-muted">Per <?php echo $game['console']; ?></small>
                 </div>
-                <span class="text-muted">$12</span>
+                <span class="text-muted">€ <?php echo $game['prezzo']; ?></span>
               </li>
-              <li class="list-group-item d-flex justify-content-between lh-condensed">
-                <div>
-                  <h6 class="my-0">Second product</h6>
-                  <small class="text-muted">Brief description</small>
-                </div>
-                <span class="text-muted">$8</span>
-              </li>
-              <li class="list-group-item d-flex justify-content-between lh-condensed">
-                <div>
-                  <h6 class="my-0">Third item</h6>
-                  <small class="text-muted">Brief description</small>
-                </div>
-                <span class="text-muted">$5</span>
-              </li>
+              <?php
+              }
+              ?>
               <li class="list-group-item d-flex justify-content-between">
-                <span>Total (USD)</span>
-                <strong>$20</strong>
+                <span>Totale </span>
+                <strong>€ <?php echo $totale; ?></strong>
               </li>
             </ul>
           </div>
