@@ -38,10 +38,12 @@
             <tbody>
                <?php
 
-               $query = $db->prepare(" SELECT ordini.id AS id,id_utente,data,titolo,prezzo,(prezzo*ordini_giochi.qta) AS tot,ordini_giochi.qta AS num,console
+               $query = $db->prepare("  SELECT ordini.id AS id,id_utente,data,titolo,prezzo,totale,ordini_giochi.qta AS num,console
                                         FROM videogiochi,utenti,ordini,ordini_giochi
-                                        WHERE id_utente = utenti.id AND id_ordine = ordini.id AND id_gioco = videogiochi.id");
-               $query->execute();
+                                        WHERE id_utente = utenti.id AND id_ordine = ordini.id AND id_gioco = videogiochi.id AND utenti.username = ?
+                                        ORDER BY data");
+               $query->execute([$_SESSION['user']]);
+
 
                while ($games = $query->fetch(PDO::FETCH_ASSOC)) {
                  echo'<tr><td>';
@@ -62,11 +64,12 @@
 
                  echo '</div></div>';
                  echo '</td><td>';
-                 $tmp = $games['tot'];
-                 echo '<div class="col-sm-8">' . bcmul($tmp,1,2)  . '</div>';
+                 //$tmp = $games['totale'];
+                 echo '<div class="col-sm-8">' . /*bcmul($tmp,1,2)*/$games['totale']  . '</div>';
                  echo '</td></tr>';
 
                }
+
                ?>
 
              </tbody>
