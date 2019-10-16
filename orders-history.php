@@ -24,6 +24,7 @@
         <div class="row">
         <?php
         //echo $_SESSION['user'];
+        //print_r($_SESSION);
          ?>
           <table class="table table-hover">
             <thead>
@@ -38,14 +39,19 @@
             <tbody>
                <?php
 
-               $query = $db->prepare("  SELECT ordini.id AS id,id_utente,data,titolo,prezzo,totale,ordini_giochi.qta AS num,console
+               $query = $db->prepare("  SELECT data,ordini.id AS id,id_utente,totale
                                         FROM videogiochi,utenti,ordini,ordini_giochi
                                         WHERE id_utente = utenti.id AND id_ordine = ordini.id AND id_gioco = videogiochi.id AND utenti.username = ?
-                                        ORDER BY data");
+                                        GROUP BY data,ordini.id,id_utente,totale");
                $query->execute([$_SESSION['user']]);
+
+               $query2 = $db->prepare("  SELECT titolo,prezzo,ordini_giochi.qta AS num,console
+                         FROM videogiochi,utenti,ordini,ordini_giochi
+                         WHERE id_utente = utenti.id AND id_ordine = ordini.id AND id_gioco = videogiochi.id AND utenti.username = ? AND data = ?");
 
 
                while ($games = $query->fetch(PDO::FETCH_ASSOC)) {
+
                  echo'<tr><td>';
                  echo '<div class="col-sm-2">'. $games['id'] . '</div>';
                  echo '</td><td>';
@@ -55,12 +61,17 @@
                  echo '</td><td>';
                  echo '<div class="col-sm-16">
                  <div class="panel-heading">
+
                   <h4 class="panel-title">
                     <a data-toggle="collapse" href="#collapse'. $games['id'] . '">Visualizza prodotti</a>
                   </h4>
                  </div>
                     <div id="collapse'. $games['id'] . '" class="panel-collapse collapse">';
-                    echo '<div class="col-sm-16">' . $games['titolo'],'  ','(',$games['console'],')','   x',$games['num']. '</div>';
+
+                $query2->execute([$_SESSION['user'],$games['data']]);
+                while ($games2 = $query2->fetch(PDO::FETCH_ASSOC)){
+                  echo '<div class="col-sm-16">' . $games2['titolo'],'  ','(',$games2['console'],')','   x',$games2['num']. '</div>';
+                }
 
                  echo '</div></div>';
                  echo '</td><td>';
