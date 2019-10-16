@@ -76,7 +76,7 @@
            ?>
           <div class="col-md-8 order-md-1">
             <h4 class="mb-3">Indirizzo di spedizione</h4>
-            <form class="needs-validation" action="db/newOrder.php" novalidate>
+            <form id="mainForm" method="post" action="db/newOrder.php">
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <label for="firstName">Nome</label>
@@ -112,7 +112,7 @@
                 </div>
                 <div class="col-md-3 mb-3">
                   <label for="zip">CAP</label>
-                  <input type="text" class="form-control" id="zip" placeholder="" required>
+                  <input type="text" class="form-control" id="zip" placeholder="" required pattern="[0-9]{5}">
                   <div class="invalid-feedback">
                     CAP richiesto.
                   </div>
@@ -135,36 +135,43 @@
                   <label class="custom-control-label" for="paypal">Paypal</label>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-md-6 mb-3">
-                  <label for="cc-name">Titolare della carta</label>
-                  <input type="text" class="form-control" id="cc-name" placeholder="" required>
-                  <div class="invalid-feedback">
-                    Titolare richiesto.
+              <div id="cardDetails">
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="cc-name">Titolare della carta</label>
+                    <input type="text" class="form-control" id="cc-name" placeholder="" required>
+                    <div class="invalid-feedback">
+                      Titolare richiesto.
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="cc-number">Numero della carta</label>
+                    <input type="text" class="form-control" id="cc-number" placeholder="" required pattern="[0-9]{16}">
+                    <div class="invalid-feedback">
+                      Numero carta richiesto.
+                    </div>
                   </div>
                 </div>
-                <div class="col-md-6 mb-3">
-                  <label for="cc-number">Numero della carta</label>
-                  <input type="text" class="form-control" id="cc-number" placeholder="" required>
-                  <div class="invalid-feedback">
-                    Numero carta richiesto.
+                <div class="row">
+                  <div class="col-md-3 mb-3">
+                    <label for="cc-expiration">Data scadenza</label>
+                    <input type="date" class="form-control" id="cc-expiration" placeholder="" required>
+                    <div class="invalid-feedback">
+                      Data scadenza richiesta.
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="cc-expiration">CVV</label>
+                    <input type="text" class="form-control" id="cc-cvv" placeholder="" required pattern="[0-9]{3}">
+                    <div class="invalid-feedback">
+                      Codice di sicurezza richiesto.
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-md-3 mb-3">
-                  <label for="cc-expiration">Data scadenza</label>
-                  <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-                  <div class="invalid-feedback">
-                    Data scadenza richiesta.
-                  </div>
-                </div>
-                <div class="col-md-3 mb-3">
-                  <label for="cc-expiration">CVV</label>
-                  <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-                  <div class="invalid-feedback">
-                    Codice di sicurezza richiesto.
-                  </div>
+              <div id="paypalDetails" style="display: none;">
+                <div class="row mb-4">
+                  <button class="btn btn-primary btn-lg btn-block">Collega Paypal</button>
                 </div>
               </div>
               <hr class="mb-4">
@@ -181,29 +188,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+    <script src="js/checkout.js"></script>
     <!--<script src="../../assets/js/vendor/holder.min.js"></script> TODO non so da dove tirare giù questo -->
-    <script>
-      // Example starter JavaScript for disabling form submissions if there are invalid fields
-      (function() {
-        'use strict';
-
-        window.addEventListener('load', function() {
-          // Fetch all the forms we want to apply custom Bootstrap validation styles to
-          var forms = document.getElementsByClassName('needs-validation');
-
-          // Loop over them and prevent submission
-          var validation = Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', function(event) {
-              if (form.checkValidity() === false) {
-                event.preventDefault();
-                event.stopPropagation();
-              }
-              form.classList.add('was-validated');
-            }, false);
-          });
-        }, false);
-      })();
-    </script>
   </body>
 </html>
