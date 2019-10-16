@@ -77,13 +77,13 @@
                                     </div>
                                     <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row align-items-center">
                                         <div class="col-3 col-sm-3 col-md-6 text-md-right">
-                                            <h6><strong>€ <?php echo $game['prezzo']; ?></strong></h6>
+                                            <h6><strong id="prezzo" value="<?php echo $game['prezzo']; ?>">€ <?php echo $game['prezzo']; ?></strong></h6>
                                         </div>
                                         <div class="col-4 col-sm-4 col-md-4">
                                             <div class="quantity">
                                               <!-- FIXME moltiplicare prezzo per quantità
                                                secondo me possiamo anche fare a meno della qta.. -->
-                                                <input type="number" step="1" max="<?php echo $game['qta']; ?>" min="1" value="1" class="qty" size="4">
+                                                <input id="qta" type="number" step="1" max="<?php echo $game['qta']; ?>" min="1" value="1" class="qty" size="4">
                                             </div>
                                         </div>
                                         <div class="col-2 col-sm-2 col-md-2 text-right">
@@ -122,5 +122,6 @@
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      <script src="js/cart.js"></script>
     </body>
 </html>
