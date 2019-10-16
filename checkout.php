@@ -153,14 +153,14 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-md-3 mb-3">
+                  <div class="col-md-4 mb-3">
                     <label for="cc-expiration">Data scadenza</label>
                     <input type="date" class="form-control" id="cc-expiration" placeholder="" required>
                     <div class="invalid-feedback">
                       Data scadenza richiesta.
                     </div>
                   </div>
-                  <div class="col-md-3 mb-3">
+                  <div class="col-md-2 mb-3">
                     <label for="cc-expiration">CVV</label>
                     <input type="text" class="form-control" id="cc-cvv" placeholder="" required pattern="[0-9]{3}">
                     <div class="invalid-feedback">
@@ -169,9 +169,9 @@
                   </div>
                 </div>
               </div>
-              <div id="paypalDetails" style="display: none;">
-                <div class="row mb-4">
-                  <button class="btn btn-primary btn-lg btn-block">Collega Paypal</button>
+              <div id="paypalDetails" style="display: none; height: 172px;">
+                <div style="padding-top: 62px;">
+                  <button class="btn btn-outline-success btn-lg btn-block">Collega Paypal</button>
                 </div>
               </div>
               <hr class="mb-4">
