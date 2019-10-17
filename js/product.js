@@ -1,4 +1,17 @@
 $(document).ready(function() {
+  var prev = '';
+
+  $('#selectConsole').on("click", function(){
+    setTimeout(function() {
+      id_gioco = $("#selectConsole").children(".active").children().prop('id');
+      if(prev != ''){
+        $("#price-" + prev).hide();
+      }
+      prev = id_gioco;
+      $("#price-" + id_gioco).show();
+    }, 50);
+  })
+
   $('#selectConsole').click(function(e) {
     $("#addToCart").prop('disabled', false);
   })

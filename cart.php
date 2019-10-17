@@ -1,6 +1,9 @@
 <?php
   session_start();
   require_once 'db/connect.php';
+  if (!isset($_SESSION['user'])) {
+    header("Location: signin.php");
+  }
 ?>
 <!doctype html>
 <html lang="it">
@@ -56,6 +59,10 @@
                         <a href="index.php" class="btn btn-outline-success btn-sm pull-right">Torna al catalogo</a>
                         <div class="clearfix"></div>
                     </div>
+                    <?php
+                    if (count($_SESSION['cart']) == 0) {
+                      echo '<div class="card-body text-center"><h4>Carrello Vuoto</h4></div>';
+                    }else{ ?>
                     <div class="card-body">
                             <?php
                             foreach($_SESSION['cart'] as $x){
@@ -100,6 +107,9 @@
                             }
                             ?>
                     </div>
+                    <?php
+                    }
+                    ?>
                     <div class="card-footer">
                         <div class="coupon col-md-5 col-sm-5 no-padding-left pull-left" style="margin: 10px">
                           <div class="pull-left">
