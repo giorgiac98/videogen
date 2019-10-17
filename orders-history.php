@@ -22,10 +22,6 @@
     <main role="main">
       <div class="container mt-5">
         <div class="row">
-        <?php
-        //echo $_SESSION['user'];
-        //print_r($_SESSION);
-         ?>
           <table class="table table-hover">
             <thead>
               <tr>
@@ -38,14 +34,6 @@
             </thead>
             <tbody>
                <?php
-               /* TODO assigned by Giorgia
-               * ti ho sistemato le query perché prendevi su roba che non serviva e
-               * facevi dei GROUP BY inutili che appesantivano solo la query
-               * ho sistemato qualche nome di variabile per essere più precisi
-               * ti chiedo di sistemare bene la grafica : TIPS dentro al tag <td>
-               * non serve per forza mettere un div, per cambiare l'ampiezza della colonna
-               * basta usare <td colspan="2"> per avere il campo che occupa 2 colonne
-               */
                $query = $db->prepare("SELECT o.id, data, tipo_pagamento, totale
                                       FROM ordini o JOIN utenti u ON u.id = o.id_utente
                                       WHERE u.username = ?");
@@ -57,18 +45,17 @@
 
                while ($order = $query->fetch(PDO::FETCH_ASSOC)) {
 
-                 echo'<tr><td>';
-                 echo '<div class="col-sm-2">'. $order['id'] . '</div>';
-                 echo '</td><td>';
-                 echo '<div class="col-sm-8">'. $order['data'] . '</div>';
-                 echo '</td><td>';
-                 echo '<div class="col-sm-8">'. $order['tipo_pagamento'] . '</div>';
-                 echo '</td><td>';
-                 echo '<div class="col-sm-16">
+                 echo'<tr><td colspan="1">';
+                 echo $order['id'];
+                 echo '</td><td colspan="1">';
+                 echo $order['data'];
+                 echo '</td><td colspan="1">';
+                 echo $order['tipo_pagamento'];
+                 echo '</td><td colspan="1">';
+                 echo '
                  <div class="panel-heading">
-
                   <h4 class="panel-title">
-                    <a data-toggle="collapse" href="#collapse'. $order['id'] . '">Visualizza prodotti</a>
+                    <button type="button" class="btn btn-success" data-toggle="collapse" href="#collapse' . $order['id'] . '">Visualizza prodotti</button>
                   </h4>
                  </div>
                     <div id="collapse'. $order['id'] . '" class="panel-collapse collapse">';
@@ -77,17 +64,12 @@
                 while ($game = $query2->fetch(PDO::FETCH_ASSOC)){
                   echo '<div class="col-sm-16">' . $game['titolo'] . '  ' . '(' . $game['console'] . ')' . '   x' . $game['qta'] . '</div>';
                 }
-
-                 echo '</div></div>';
-                 echo '</td><td>';
-                 //$tmp = $games['totale'];
-                 echo '<div class="col-sm-8">€ ' . /*bcmul($tmp,1,2)*/$order['totale']  . '</div>';
+                 echo '</td><td colspan="1">';
+                 echo '<div>€ ' . $order['totale']  . '</div>';
                  echo '</td></tr>';
-
                }
 
                ?>
-
              </tbody>
            </table>
          </div>
