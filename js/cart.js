@@ -6,4 +6,5 @@ $(document).ready(function(){
   $("#qta").on("input", () => void $("#prezzo").text("€ " +
     parseFloat($("#prezzo").attr("value"))*$("#qta").val()
   ));
+
 });
