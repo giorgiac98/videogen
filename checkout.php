@@ -35,7 +35,7 @@
   <body>
     <?php
       require_once 'navbar.php';
-      $totale = 0;
+      $_SESSION['totale'] = 0;
     ?>
     <main role="main">
       <div class="container mt-5">
@@ -51,7 +51,7 @@
                   $query = $db->prepare("SELECT id, titolo, console, prezzo FROM videogiochi WHERE id = ?");
                   $query->execute([$x]);
                   $game = $query->fetch();
-                  $totale += $game['prezzo'];
+                  $_SESSION['totale'] += $game['prezzo'];
               ?>
               <li class="list-group-item d-flex justify-content-between lh-condensed">
                 <div id="<?php echo $game['id']; ?>">
@@ -65,7 +65,7 @@
               ?>
               <li class="list-group-item d-flex justify-content-between">
                 <span>Totale </span>
-                <strong>€ <?php echo $totale; ?></strong>
+                <strong>€ <?php echo $_SESSION['totale']; ?></strong>
               </li>
             </ul>
           </div>

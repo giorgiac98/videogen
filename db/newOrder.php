@@ -11,9 +11,9 @@
       $id_utente = $query->fetch()['id'];
 
       $query = $db->prepare(
-              "INSERT INTO ordini(id_utente, data, tipo_pagamento)
-              VALUES(?, ?, ?)");
-      $query->execute([$id_utente, date("d/m/Y", time()), $_POST['paymentMethod']]);
+              "INSERT INTO ordini(id_utente, data, tipo_pagamento, totale)
+              VALUES(?, ?, ?, ?)");
+      $query->execute([$id_utente, date("d/m/Y", time()), $_POST['paymentMethod'], $_SESSION['totale']]);
 
       $query = $db->prepare(
               "SELECT id
