@@ -171,7 +171,7 @@
               </div>
               <div id="paypalDetails" style="display: none; height: 172px;">
                 <div style="padding-top: 62px;">
-                  <button class="btn btn-outline-success btn-lg btn-block">Collega Paypal</button>
+                  <button id="connectPaypal" class="btn btn-outline-success btn-lg btn-block">Collega Paypal</button>
                 </div>
               </div>
               <hr class="mb-4">
