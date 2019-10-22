@@ -175,7 +175,7 @@
                 </div>
               </div>
               <hr class="mb-4">
-              <button class="btn btn-success btn-lg btn-block">Completa Ordine</button>
+              <button class="btn btn-success btn-lg btn-block" type="submit">Completa Ordine</button>
             </form>
           </div>
         </div>
