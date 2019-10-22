@@ -84,7 +84,7 @@
                                     </div>
                                     <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row align-items-center">
                                         <div class="col-3 col-sm-3 col-md-6 text-md-right">
-                                            <h6><strong id="prezzo" data-id="<?php echo $game['id']; ?>" value="<?php echo $game['prezzo']; ?>">€ <?php echo $game['prezzo']; ?></strong></h6>
+                                            <h5><strong id="prezzo" data-id="<?php echo $game['id']; ?>" value="<?php echo $game['prezzo']; ?>">€ <?php echo $game['prezzo']; ?></strong></h5>
                                         </div>
                                         <div class="col-2 col-sm-2 col-md-2 text-right">
                                           <form action="cartDeleteGame.php" method="post">
