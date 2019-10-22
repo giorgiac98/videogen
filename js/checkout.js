@@ -11,4 +11,10 @@ $(document).ready(function(){
     $("#paypalDetails").show();
     $("#cardDetails").hide();
   });
+  $("#connectPaypal").click(function(e){
+    $("#connectPaypal").text('Connessione in corso...')
+    setTimeout(function(){
+      $("#connectPaypal").text('Account Paypal collegato!')
+    }, 2000)
+  });
 });
