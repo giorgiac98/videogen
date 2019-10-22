@@ -25,10 +25,10 @@
       foreach($_SESSION['cart'] as $x){
         $query = $db->prepare(
           "INSERT INTO ordini_giochi(id_ordine, id_gioco, qta)
-          VALUES(?, 1, ?)");
+          VALUES(?, ?, 1)");
         $query->execute([$id_ordine, $x]);
       }
-
+      $_SESSION['cart'] = [];
       header("Location: ../orders-history.php");
     }
     else{

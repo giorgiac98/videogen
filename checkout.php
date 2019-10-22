@@ -123,15 +123,15 @@
               <h4 class="mb-3">Modalità di Pagamento</h4>
               <div class="d-block my-3">
                 <div class="custom-control custom-radio custom-control-inline">
-                  <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+                  <input id="credit" value="Carta di credito" name="paymentMethod" type="radio" class="custom-control-input" checked required>
                   <label class="custom-control-label" for="credit">Carta di credito</label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
-                  <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
+                  <input id="debit" value="Carta di debito" name="paymentMethod" type="radio" class="custom-control-input" required>
                   <label class="custom-control-label" for="debit">Carta di debito</label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
-                  <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
+                  <input id="paypal" value="PayPal" name="paymentMethod" type="radio" class="custom-control-input" required>
                   <label class="custom-control-label" for="paypal">Paypal</label>
                 </div>
               </div>
