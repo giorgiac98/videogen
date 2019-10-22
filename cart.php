@@ -86,13 +86,6 @@
                                         <div class="col-3 col-sm-3 col-md-6 text-md-right">
                                             <h6><strong id="prezzo" data-id="<?php echo $game['id']; ?>" value="<?php echo $game['prezzo']; ?>">€ <?php echo $game['prezzo']; ?></strong></h6>
                                         </div>
-                                        <div class="col-4 col-sm-4 col-md-4">
-                                            <div class="quantity">
-                                              <!-- FIXME moltiplicare prezzo per quantità
-                                               secondo me possiamo anche fare a meno della qta.. -->
-                                                <input id="qta" data-id="<?php echo $game['id']; ?>" type="number" step="1" max="<?php echo $game['qta']; ?>" min="1" value="1" class="qty" size="4">
-                                            </div>
-                                        </div>
                                         <div class="col-2 col-sm-2 col-md-2 text-right">
                                           <form action="cartDeleteGame.php" method="post">
                                             <button type="submit" class="btn btn-outline-danger btn-xs" name="game" value="<?php echo $game['id']; ?>">
