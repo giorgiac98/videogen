@@ -54,7 +54,7 @@ INSERT INTO public.videogiochi(titolo, produttore, img_path, prezzo, qta, consol
 		Ti avventurerai nel nostro sistema solare, in mondi misteriosi e inesplorati allo scopo di trovare un arsenale di armi e devastanti, nuovissime abilità.
 		Per sconfiggere la Legione Rossa e affrontare Ghaul, dovrai radunare gli eroi dispersi e combattere per riconquistare la nostra terra.'
 		),
-		('Destiny 2', 'ACTIVISION', 'media\destiny2.jpg', 12.70, 10, 'PC',
+		('Destiny 2', 'ACTIVISION', 'media\destiny2.jpg', 12.79, 10, 'PC',
 		'Dai creatori dell''acclamato Destiny arriva l''atteso seguito: uno sparatutto d''azione che ti accompagnerà in un epico viaggio alla scoperta del sistema solare.
 		L''ultima città sicura sulla Terra è caduta sotto i colpi degli invasori guidati da Ghaul, l''imponente comandante della brutale Legione Rossa che ha privato i guardiani del loro potere e costretto i superstiti alla fuga.
 		Ti avventurerai nel nostro sistema solare, in mondi misteriosi e inesplorati allo scopo di trovare un arsenale di armi e devastanti, nuovissime abilità.
